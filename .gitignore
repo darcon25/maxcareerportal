@@ -1,0 +1,19 @@
+# 備份檔
+index.backup-*.html
+
+# 舊版子資料夾
+Maxcareerportal/
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# 開發工具
+*.log
+*.tmp
+
+# 不需要部署的專案文件（選擇性忽略，保留也沒關係）
+# docs/

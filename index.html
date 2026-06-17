@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08090a" />
+  <link rel="canonical" href="https://maxliucareer.zeabur.app/" />
+  <meta property="og:url" content="https://maxliucareer.zeabur.app/" />
+  <title>Max.CT.Liu — Legal-Tech PM · Curious by Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Nunito:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─────────────────────────────────────────
+       Design reference: linear.app hero section
+       Source: https://saaspo.com/sections/linear-hero-section
+       OD color.md rules applied throughout
+       ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── Palette (OD color.md: name by purpose, not hue) ── */
+      --bg:           #08090a;   /* Linear exact bg, non-pure black */
+      --surface:      #111214;
+      --surface-hi:   #1a1c1f;
+      --border:       rgba(255,255,255,0.06);
+      --border-hi:    rgba(255,255,255,0.12);
+      --fg:           #ededed;   /* OD: not pure white */
+      --muted:        #888888;
+      --dim:          #4a4a4a;
+      /* accent max 2 visible uses/screen — OD rule */
+      --accent:       #6ee7b7;
+      /* semantic only */
+      --success:      #34d399;
+      /* hero glow colours */
+      --glow-1:       rgba(139,92,246,0.18);   /* violet */
+      --glow-2:       rgba(59,130,246,0.10);   /* blue */
+      /* typography */
+      --mono:         'JetBrains Mono', monospace;
+      --sans:         'Inter', sans-serif;
+      --radius:       6px;
+      --max-w:        1100px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ────────────────────────────────
+       NAV  (Linear-style: logo | links | cta)
+       ──────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,9,10,0.80);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 52px;
+      display: flex; align-items: center; gap: 2rem;
+    }
+    .nav-logo {
+      font-size: 0.85rem; font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    .nav-logo .dot { color: var(--accent); } /* accent 使用點 1/2 */
+    .nav-links {
+      display: flex; gap: 1.5rem;
+      flex: 1;
+    }
+    .nav-links a {
+      font-size: 0.8rem; color: var(--muted);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--fg); }
+    .nav-cta {
+      font-size: 0.78rem; font-weight: 500;
+      padding: 0.35rem 0.9rem;
+      background: var(--fg);
+      color: var(--bg);
+      border-radius: var(--radius);
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ────────────────────────────────
+       HERO  (Linear-style: centered + glow)
+       ──────────────────────────────── */
+    #hero {
+      position: relative;
+      padding: 7rem 1.5rem 5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* radial glow behind headline */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse at 50% 30%,
+        var(--glow-1) 0%,
+        var(--glow-2) 40%,
+        transparent 70%);
+      pointer-events: none;
+    }
+
+    /* subtle dot-grid texture */
+    #hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, black, transparent);
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+
+    /* announcement chip — Linear style */
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--border-hi);
+      border-radius: 999px;
+      font-size: 0.73rem; color: var(--muted);
+      margin-bottom: 2rem;
+      background: rgba(255,255,255,0.03);
+      transition: border-color 0.15s, color 0.15s;
+      cursor: default;
+    }
+    .hero-chip:hover { border-color: rgba(255,255,255,0.2); color: var(--fg); }
+    .hero-chip .chip-label {
+      font-family: var(--mono); font-size: 0.66rem;
+      padding: 0.1rem 0.45rem;
+      background: rgba(110,231,183,0.12);
+      color: var(--accent);        /* accent 使用點 2/2 */
+      border-radius: 3px;
+    }
+
+    /* hero headline */
+    .hero-h1 {
+      font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--fg);
+      margin-bottom: 1.25rem;
+    }
+    /* gradient text on selected words */
+    .hero-h1 .grad {
+      background: linear-gradient(90deg, #c4b5fd 0%, #93c5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+    .btn-solid {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.55rem 1.15rem;
+      background: var(--fg); color: var(--bg);
+      font-size: 0.83rem; font-weight: 600;
+      border-radius: var(--radius);
+      transition: opacity 0.15s;
+    }
+    .btn-solid:hover { opacity: 0.88; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.55rem 1.15rem;
+      border: 1px solid var(--border-hi);
+      color: var(--muted); font-size: 0.83rem;
+      border-radius: var(--radius);
+      background: transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.25); color: var(--fg); }
+
+    /* ── company logo strip — 乒乓光束邊框 ── */
+    @keyframes beam-ping {
+      0%   { background-position: -50% 0%; }
+      100% { background-position: 150% 0%; }
+    }
+    .logo-strip {
+      margin: 0 0 2rem;
+      padding: 1.5px 0;           /* 讓 pseudo-element 邊框可見 */
+      position: relative;
+      border-radius: 4px;
+    }
+    /* 頂部光束 */
+    .logo-strip::before,
+    .logo-strip::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 1.5px;
+      border-radius: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        transparent 28%,
+        rgba(110,231,183,0.9) 50%,
+        transparent 72%,
+        transparent 100%
+      );
+      background-size: 200% 100%;
+      animation: beam-ping 3.25s linear infinite alternate;
+    }
+    .logo-strip::before { top: 0; }
+    .logo-strip::after  { bottom: 0; animation-delay: -1.625s; } /* 底部反相，形成交叉 */
+    .logo-strip-inner {
+      padding: 1.5rem 0;
+    }
+    .logo-strip-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--dim);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+      text-align: center;
+    }
+    .logo-strip-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+      flex-wrap: wrap;
+    }
+    .logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      opacity: 0.7;
+      transition: opacity 0.25s;
+    }
+    .logo-item:hover { opacity: 1; }
+    /* img logos (Dell, Lenovo) — 直接顯示品牌原色 */
+    .logo-item img {
+      height: 26px;
+      width: auto;
+      object-fit: contain;
+    }
+    .logo-item--featured img { height: 30px; }
+    /* inline SVG logos (Qisda, Elite) */
+    .logo-item--svg svg {
+      display: block;
+      overflow: visible;
+    }
+    /* text chip fallback (GSP Tech, LC Futurecenter) */
+    .logo-text {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      text-transform: uppercase;
+      border: 1px solid var(--border-hi);
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      color: var(--muted);
+    }
+
+    /* ── career timeline (hero visual) ── */
+    .career-timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 1.5rem;
+      border: 1px solid var(--border-hi);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: 0 0 80px rgba(139,92,246,0.10), 0 0 40px rgba(59,130,246,0.06);
+    }
+    /* 頂部光條 */
+    .career-timeline::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      border-radius: 12px 12px 0 0;
+    }
+    /* 垂直時間線 */
+    .tl-line {
+      position: absolute;
+      left: calc(1rem + 5.2rem + 0.75rem + 3px);  /* year寬 + gap + 對齊dot中心 */
+      top: 2.5rem; bottom: 1.5rem;
+      width: 1px;
+      background: linear-gradient(to bottom,
+        transparent,
+        var(--border-hi) 8%,
+        var(--border-hi) 92%,
+        transparent);
+    }
+    .tl-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1.6rem;
+      padding: 0 0.25rem;
+    }
+    .tl-row:last-child { margin-bottom: 0; }
+    .tl-year {
+      width: 5.2rem;
+      flex-shrink: 0;
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 0.82rem;        /* 放大：0.6 → 0.82 */
+      color: #a0aec0;            /* 更亮的藍灰，清晰易讀 */
+      line-height: 1.6;
+      padding-top: 0.15rem;
+      font-weight: 500;
+    }
+    .tl-dot-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 0.4rem;
+      flex-shrink: 0;
+    }
+    /* ── spotlight keyframes ──
+       依序打燈：前 22% 節點爆發強光，其餘 idle
+       主視覺：box-shadow 光暈 > 環擴散
+    ── */
+
+    /* 節點本體：scale + 白光 spotlight */
+    @keyframes tl-dot-spotlight {
+      0%, 22%, 100% { transform: scale(1);    box-shadow: 0 0 0 transparent; }
+      5%            { transform: scale(1.65); box-shadow: 0 0 18px 7px rgba(255,255,255,0.32); }
+      14%           { transform: scale(1.2);  box-shadow: 0 0 10px 3px rgba(255,255,255,0.1); }
+    }
+    /* 第 1 環：spotlight 瞬間射出的光圈 */
+    @keyframes tl-ring-1 {
+      0%   { transform: scale(1); opacity: 0; }
+      1%   { opacity: 0.9; }
+      18%  { transform: scale(4.5); opacity: 0; }
+      19%, 100% { transform: scale(1); opacity: 0; }
+    }
+    /* 第 2 環：餘暉，慢慢散去 */
+    @keyframes tl-ring-2 {
+      0%, 3%  { transform: scale(1); opacity: 0; }
+      5%      { opacity: 0.55; }
+      22%     { transform: scale(6.5); opacity: 0; }
+      23%, 100% { transform: scale(1); opacity: 0; }
+    }
+    /* 文字：spotlight 打到時提亮，idle 時略暗 */
+    @keyframes tl-text-spotlight {
+      0%, 22%, 100% { transform: scale(1);    opacity: 0.72; }
+      7%            { transform: scale(1.03); opacity: 1; }
+    }
+
+    /* Dell accent spotlight — 綠光加強版 */
+    @keyframes tl-dot-spotlight-accent {
+      0%, 22%, 100% { transform: scale(1);    box-shadow: 0 0 6px 2px rgba(110,231,183,0.22); }
+      5%            { transform: scale(1.85); box-shadow: 0 0 32px 14px rgba(110,231,183,0.65); }
+      14%           { transform: scale(1.35); box-shadow: 0 0 18px 6px rgba(110,231,183,0.3); }
+    }
+
+    /* ── 順序延遲：12.5s cycle，5 節點每行差 2.5s ── */
+    .tl-row { --pd: 0s; }
+    .career-timeline > .tl-row:nth-child(2) { --pd: 0s; }
+    .career-timeline > .tl-row:nth-child(3) { --pd: 2.5s; }
+    .career-timeline > .tl-row:nth-child(4) { --pd: 5s; }
+    .career-timeline > .tl-row:nth-child(5) { --pd: 7.5s; }
+    .career-timeline > .tl-row:nth-child(6) { --pd: 10s; }  /* Dell */
+
+    .tl-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      border: 1px solid var(--border-hi);
+      background: var(--bg);
+      position: relative; z-index: 1;
+      animation: tl-dot-spotlight 12.5s ease-in-out infinite;
+      animation-delay: var(--pd);
+    }
+    /* 3 層漣漪環：用 .tl-dot-wrap 和 .tl-dot 的 ::before ::after */
+    .tl-dot::before,
+    .tl-dot::after,
+    .tl-dot-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .tl-dot-wrap { position: relative; }
+    .tl-dot-wrap::after {
+      /* 第 3 環停用 — spotlight 效果只需 2 環 */
+      top: calc(0.4rem + 0px); left: 50%;
+      transform-origin: center;
+      transform: translateX(-50%) scale(1);
+      width: 8px; height: 8px;
+      border: 1px solid transparent;
+      animation: none;
+    }
+    .tl-dot::before {
+      border: 1px solid rgba(160,174,192,0.6);
+      animation: tl-ring-1 12.5s ease-out infinite;
+      animation-delay: var(--pd);
+    }
+    .tl-dot::after {
+      border: 1px solid rgba(160,174,192,0.38);
+      animation: tl-ring-2 12.5s ease-out infinite;
+      animation-delay: var(--pd);
+    }
+
+    /* Dell — 加入 sequential 節奏（--pd: 10s via nth-child(6)），保留綠色外觀 */
+    .tl-row--accent .tl-dot {
+      background: var(--accent);
+      border-color: var(--accent);
+      animation: tl-dot-spotlight-accent 12.5s ease-in-out infinite;
+      animation-delay: var(--pd);
+    }
+    .tl-row--accent .tl-dot::before {
+      border-color: rgba(110,231,183,0.65);
+      /* 繼承 tl-ring-1 12.5s + var(--pd) */
+    }
+    .tl-row--accent .tl-dot::after {
+      border-color: rgba(110,231,183,0.35);
+      /* 繼承 tl-ring-2 12.5s + var(--pd) */
+    }
+    .tl-row--accent .tl-dot-wrap::after {
+      border-color: rgba(110,231,183,0.2);
+      /* 繼承 tl-ring-3 12.5s + var(--pd) */
+    }
+
+    /* 文字同步 */
+    .tl-body {
+      animation: tl-text-spotlight 12.5s ease-in-out infinite;
+      animation-delay: var(--pd);
+      transform-origin: left center;
+    }
+    /* Dell .tl-body 繼承 .tl-body 的 tl-text-seq 12.5s + var(--pd) — 無需 override */
+    .tl-body { flex: 1; min-width: 0; }
+    .tl-company {
+      font-size: 0.9rem;         /* 放大：0.8 → 0.9 */
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 0.2rem;
+    }
+    .tl-row--accent .tl-company { color: var(--accent); }
+    .tl-role {
+      font-family: var(--mono);
+      font-size: 0.72rem;        /* 放大：0.62 → 0.72 */
+      color: #718096;            /* 中灰，比 --dim 亮 */
+      margin-bottom: 0.6rem;
+    }
+    .tl-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .tl-tag {
+      font-family: var(--mono);
+      font-size: 0.68rem;        /* 放大：0.58 → 0.68 */
+      color: #a0aec0;            /* 藍灰，清晰可讀 */
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+    .tl-row--accent .tl-tag {
+      border-color: rgba(110,231,183,0.25);
+      color: #81e6c8;            /* 淡薄荷綠，與 Dell accent 呼應 */
+    }
+
+    /* ────────────────────────────────
+       SHARED SECTION STYLES
+       ──────────────────────────────── */
+    .section {
+      border-top: 1px solid var(--border);
+      padding: 5rem 1.5rem;
+    }
+    .container { max-width: var(--max-w); margin: 0 auto; }
+
+    /* section label — Linear "FIG 0.X" style */
+    .section-label {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .section-num {
+      font-family: var(--mono); font-size: 0.66rem;
+      color: var(--dim);
+    }
+    .section-title {
+      font-size: 0.68rem; font-weight: 500;
+      color: var(--dim);
+      text-transform: uppercase; letter-spacing: 0.12em;
+    }
+    .section-h2 {
+      font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 1.05rem;
+      max-width: 680px; margin-bottom: 2.5rem;
+    }
+
+    /* ────────────────────────────────
+       ABOUT
+       ──────────────────────────────── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.75rem; margin-top: 0.5rem;
+    }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.18s;
+    }
+    .about-card:hover { border-color: var(--border-hi); }
+    /* 大數字背景裝飾 */
+    .about-card::before {
+      content: attr(data-n);
+      position: absolute;
+      top: -8px; right: 14px;
+      font-size: 5.5rem; font-weight: 700;
+      color: rgba(255,255,255,0.035);
+      font-family: var(--mono);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .about-card .card-num {
+      font-size: 1rem;
+      font-family: var(--mono);
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+    }
+    .about-card h3 {
+      font-size: 1.15rem; font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+    }
+    .about-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+
+    /* ────────────────────────────────
+       EXPERIENCE (Linear row style)
+       ──────────────────────────────── */
+    .exp-item {
+      display: grid; grid-template-columns: 110px 1fr;
+      gap: 0 2.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-period {
+      font-family: var(--mono); font-size: 0.7rem;
+      color: var(--dim); padding-top: 0.2rem;
+    }
+    .exp-content h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .exp-co {
+      font-family: var(--mono); font-size: 0.72rem;
+      color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .exp-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.65; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.65rem; }
+    .tag {
+      font-family: var(--mono); font-size: 0.65rem;
+      padding: 0.18rem 0.5rem;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      color: var(--dim);
+      background: rgba(255,255,255,0.02);
+    }
+
+    /* ────────────────────────────────
+       SKILLS — Constellation Map
+       ──────────────────────────────── */
+    .const-svg {
+      width: 100%; display: block;
+      margin: 0.5rem auto 0;
+      overflow: visible;
+    }
+    .const-legend {
+      display: flex; gap: 1.5rem; justify-content: center;
+      margin-top: 1.25rem; flex-wrap: wrap;
+    }
+    .const-legend-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; color: var(--muted); font-family: var(--mono);
+    }
+    .const-legend-dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* ────────────────────────────────
+       PROJECTS  (Linear feature card)
+       ──────────────────────────────── */
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 1rem;
+      margin-bottom: 0.5rem;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .project-card:last-child { margin-bottom: 0; }
+    .project-card:hover {
+      border-color: var(--border-hi);
+      background: var(--surface-hi);
+    }
+    .project-card h3 { font-size: 0.88rem; margin-bottom: 0.3rem; }
+    .project-card p  { font-size: 0.78rem; color: var(--dim); }
+    .project-arrow {
+      font-size: 0.78rem; color: var(--dim);
+      padding-top: 0.1rem; white-space: nowrap;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .project-card:hover .project-arrow { color: var(--fg); transform: translate(2px,-2px); }
+
+    /* ────────────────────────────────
+       WRITING
+       ──────────────────────────────── */
+    .writing-item {
+      display: flex; justify-content: space-between;
+      align-items: baseline; gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.15s;
+    }
+    .writing-item:last-child { border-bottom: none; }
+    .writing-item:hover .writing-title { color: var(--fg); }
+    .writing-title { font-size: 0.88rem; color: var(--muted); }
+    .writing-meta {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--dim); white-space: nowrap;
+    }
+
+    /* ────────────────────────────────
+       CONTACT  (Linear "Built for the future" style)
+       ──────────────────────────────── */
+    #contact {
+      border-top: 1px solid var(--border);
+      padding: 6rem 1.5rem 5rem;
+      text-align: center;
+    }
+    .contact-h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; letter-spacing: -0.035em;
+      margin-bottom: 0.75rem;
+    }
+    .contact-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    .contact-actions { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      font-size: 0.78rem; color: var(--muted);
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .social-btn:hover { border-color: rgba(255,255,255,0.22); color: var(--fg); }
+    .social-btn svg { flex-shrink: 0; }
+
+    /* ────────────────────────────────
+       FOOTER  (Linear multi-col)
+       ──────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--dim);
+    }
+    .footer-links { display: flex; gap: 1.25rem; }
+    .footer-links a { font-size: 0.75rem; color: var(--dim); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--muted); }
+
+    /* ────────────────────────────────
+       SCROLLBAR
+       ──────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+
+    /* ────────────────────────────────
+       RESPONSIVE
+       ──────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero-h1 { font-size: 2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+      .nav-links { display: none; }
+    }
+    /* ── Nav 經驗分享按鈕 ── */
+    .nav-share-btn {
+      background: none; border: 1px solid rgba(110,231,183,0.35);
+      color: var(--accent); font-size: 0.83rem; font-family: var(--sans);
+      padding: 0.3rem 0.85rem; border-radius: 20px; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-share-btn:hover { background: rgba(110,231,183,0.08); border-color: var(--accent); }
+
+    /* ══════════════ PRESENTATION OVERLAY ══════════════ */
+    #pres-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: #08090a; flex-direction: column;
+      font-family: var(--sans);
+    }
+    #pres-overlay.active { display: flex; }
+
+    /* 頂部工具列 */
+    .pres-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.05);
+      flex-shrink: 0;
+    }
+    .pres-logo { font-size: 0.82rem; color: var(--muted); font-family: var(--mono); }
+    .pres-progress {
+      display: flex; gap: 0.5rem; align-items: center;
+    }
+    .pres-pip {
+      width: 28px; height: 2px; background: rgba(255,255,255,0.12);
+      border-radius: 2px; transition: background 0.3s;
+    }
+    .pres-pip.active { background: var(--accent); }
+    .pres-close {
+      background: none; border: none; color: var(--muted);
+      font-size: 1.4rem; cursor: pointer; padding: 0.2rem 0.5rem;
+      transition: color 0.2s;
+    }
+    .pres-close:hover { color: var(--fg); }
+
+    /* 主內容區 */
+    /* ── Sidebar TOC ── */
+    .pres-body {
+      flex: 1; display: flex; overflow: hidden;
+    }
+    .pres-sidebar {
+      width: 560px; flex-shrink: 0;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 2rem 3rem;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      gap: 0.5rem;
+    }
+    .pres-toc-item {
+      display: flex; align-items: center; gap: 1.1rem;
+      padding: 0.85rem 1.25rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      border: none; background: none; text-align: left; width: 100%;
+    }
+    .pres-toc-item:hover { background: rgba(255,255,255,0.04); }
+    .pres-toc-num {
+      font-family: var(--mono); font-size: 1.28rem;
+      width: 2.4rem; flex-shrink: 0; text-align: right;
+      transition: color 0.3s;
+    }
+    .pres-toc-label {
+      font-size: 1.05rem; line-height: 1.35;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    /* 狀態：未到（dim） */
+    .pres-toc-item.toc-future .pres-toc-num   { color: rgba(255,255,255,0.12); }
+    .pres-toc-item.toc-future .pres-toc-label { color: rgba(255,255,255,0.12); }
+    /* 狀態：已過（略亮） */
+    .pres-toc-item.toc-past .pres-toc-num   { color: rgba(255,255,255,0.3); }
+    .pres-toc-item.toc-past .pres-toc-label { color: rgba(255,255,255,0.3); }
+    /* 狀態：當前（Spotlight 打亮） */
+    .pres-toc-item.toc-active {
+      background: rgba(110,231,183,0.06);
+    }
+    .pres-toc-item.toc-active .pres-toc-num {
+      color: var(--accent);
+    }
+    .pres-toc-item.toc-active .pres-toc-label {
+      color: var(--fg);
+      text-shadow: 0 0 16px rgba(110,231,183,0.55), 0 0 32px rgba(110,231,183,0.2);
+      font-weight: 600;
+    }
+    /* 左側 accent 線 */
+    .pres-toc-item.toc-active::before {
+      content: ''; display: block;
+      position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 2px; height: 60%; background: var(--accent);
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(110,231,183,0.6);
+    }
+    .pres-toc-item { position: relative; }
+
+    .pres-stage {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+
+    /* 單張 slide */
+    .pres-slide {
+      display: none; position: absolute; inset: 0;
+      flex-direction: column; justify-content: center;
+      padding: 4rem 6vw; max-width: 1400px; margin: 0 auto;
+      width: 100%;
+    }
+    .pres-slide.visible { display: flex; }
+
+    /* 裝飾大字 */
+    .pres-chap-num {
+      position: absolute; right: 5vw; top: 50%; transform: translateY(-55%);
+      font-size: clamp(10rem, 22vw, 22rem); font-weight: 800;
+      color: rgba(255,255,255,0.025); font-family: var(--mono);
+      line-height: 1; user-select: none; pointer-events: none;
+    }
+
+    /* 章節標籤 */
+    .pres-label {
+      font-size: 1rem; font-family: var(--mono); color: var(--accent);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem;
+    }
+
+    /* 標題 */
+    .pres-title {
+      font-size: clamp(3rem, 5.5vw, 5.5rem); font-weight: 700;
+      color: var(--fg); line-height: 1.2; margin-bottom: 0.75rem;
+    }
+
+    /* 副標 */
+    .pres-subtitle {
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem); color: var(--muted);
+      margin-bottom: 2.5rem; line-height: 1.5;
+    }
+
+    /* 金句框 */
+    .pres-quote {
+      border-left: 3px solid var(--accent); padding: 0.9rem 1.5rem;
+      color: rgba(110,231,183,0.85); font-size: clamp(1.2rem, 2vw, 1.8rem);
+      font-style: italic; margin-bottom: 2.25rem;
+      background: rgba(110,231,183,0.04); border-radius: 0 6px 6px 0;
+    }
+
+    /* 重點列表 */
+    .pres-points { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.25rem; }
+    .pres-points li {
+      display: flex; align-items: flex-start; gap: 1rem;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem); color: rgba(237,237,237,0.88);
+      line-height: 1.55;
+    }
+    .pres-points li::before {
+      content: '→'; color: var(--accent); flex-shrink: 0;
+      margin-top: 0.05em; font-family: var(--mono);
+    }
+
+    /* Speaker notes */
+    .pres-notes {
+      margin-top: 2rem; padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.03); border-radius: 6px;
+      font-size: 0.78rem; color: rgba(255,255,255,0.3);
+      font-family: var(--mono); border: 1px solid rgba(255,255,255,0.05);
+      display: none;
+    }
+    .pres-notes.show { display: block; }
+    .notes-label { color: rgba(110,231,183,0.4); margin-bottom: 0.35rem; font-size: 0.7rem; letter-spacing: 0.1em; }
+
+    /* 底部導航 */
+    .pres-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2rem; border-top: 1px solid rgba(255,255,255,0.05);
+      flex-shrink: 0;
+    }
+    .pres-counter { font-size: 0.78rem; font-family: var(--mono); color: var(--muted); }
+    .pres-btn-group { display: flex; gap: 0.75rem; }
+    .pres-btn {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      color: var(--fg); padding: 0.5rem 1.2rem; border-radius: 6px;
+      cursor: pointer; font-size: 0.85rem; transition: all 0.15s;
+    }
+    .pres-btn:hover { background: rgba(255,255,255,0.08); }
+    .pres-btn:disabled { opacity: 0.25; cursor: default; }
+    .pres-notes-toggle {
+      background: none; border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted); padding: 0.5rem 1rem; border-radius: 6px;
+      cursor: pointer; font-size: 0.78rem; font-family: var(--mono);
+      transition: color 0.2s;
+    }
+    .pres-notes-toggle:hover { color: var(--fg); }
+
+    /* 開場 slide 特殊樣式 */
+    .pres-slide-cover .pres-title {
+      font-size: clamp(4rem, 7vw, 7rem);
+    }
+    .pres-slide-cover .pres-subtitle {
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+    }
+    .pres-speaker-tag {
+      margin-top: 3rem; display: flex; align-items: center; gap: 1rem;
+    }
+    .pres-speaker-tag span:first-child {
+      font-family: var(--mono); font-size: 1.05rem;
+      color: var(--accent); padding: 0.35rem 0.85rem;
+      border: 1px solid rgba(110,231,183,0.3); border-radius: 4px;
+    }
+    .pres-speaker-tag span:last-child { font-size: 1.05rem; color: var(--muted); }
+
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════ NAV ══════════════════ -->
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-logo">Max.CT.Liu<span class="dot">.</span></span>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <button class="nav-share-btn" onclick="openPresentation()">經驗分享 ✦</button>
+      </div>
+      <a href="#contact" class="nav-cta">Contact →</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <!-- announcement chip -->
+      <h1 class="hero-h1">
+        <span class="grad">Curious by Design</span>
+      </h1>
+
+      <p class="hero-sub">
+        文科法學背景出發，歷經 Qisda、Elite、LC Futurecenter、GSP Tech、Dell，<br>
+        橫跨硬體 NPI、產品管理到 AI 自動化。15 年，持續進化中。
+      </p>
+
+      <!-- company logo strip -->
+      <div class="logo-strip">
+        <div class="logo-strip-inner">
+        <p class="logo-strip-label">Experience from</p>
+        <div class="logo-strip-row">
+
+          <!-- Qisda — 品牌藍 #1078C8，Nunito 圓潤 -->
+          <div class="logo-item logo-item--svg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 32" height="26" aria-label="Qisda">
+              <text x="50" y="24" text-anchor="middle"
+                    font-family="Nunito, 'Arial Rounded MT Bold', sans-serif"
+                    font-size="24" font-weight="700" fill="#1078C8"
+                    letter-spacing="-0.5">Qisda</text>
+            </svg>
+          </div>
+
+          <!-- ECS Elitegroup — 橘色 swoosh + 藍色 ECS -->
+          <div class="logo-item logo-item--svg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 40" height="32" aria-label="ECS Elitegroup">
+              <!-- 橘色 swoosh -->
+              <path d="M4,34 Q18,6 52,4 L54,12 Q24,14 12,38 Z" fill="#F05A22"/>
+              <!-- 藍色 ECS -->
+              <text x="40" y="30" text-anchor="middle"
+                    font-family="'Arial Black', 'Impact', sans-serif"
+                    font-size="26" font-weight="900" fill="#1A3A8F"
+                    letter-spacing="-0.5">ECS</text>
+            </svg>
+          </div>
+
+          <!-- Lenovo — 品牌紅 #E2231A -->
+          <div class="logo-item logo-item--svg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 32" height="24" aria-label="Lenovo">
+              <text x="44" y="23" text-anchor="middle"
+                    font-family="Inter, sans-serif"
+                    font-size="18" font-weight="700" fill="#E2231A"
+                    letter-spacing="1">Lenovo</text>
+            </svg>
+          </div>
+
+          <!-- GSP Tech — 幾何方形 logo + 文字 -->
+          <div class="logo-item logo-item--svg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 32" height="28" aria-label="GSP Tech">
+              <!-- 外框正方形 -->
+              <rect x="1" y="1" width="28" height="28" rx="1"
+                    fill="none" stroke="#1A3A7A" stroke-width="2.5"/>
+              <!-- 內部 C 形 (左+上+下邊，開右側) -->
+              <rect x="6" y="6" width="15" height="16" rx="0.5"
+                    fill="none" stroke="#1A3A7A" stroke-width="2.2"/>
+              <!-- 右側開口 (遮掉右邊框) -->
+              <rect x="19" y="7.5" width="4" height="13" fill="#08090a"/>
+              <!-- 右下角兩個小點 -->
+              <rect x="20" y="18" width="4" height="4" rx="0.5" fill="#5a7abf"/>
+              <rect x="25" y="18" width="4" height="4" rx="0.5" fill="#5a7abf"/>
+              <!-- GSP TECH 文字 -->
+              <text x="62" y="21" text-anchor="middle"
+                    font-family="Inter, sans-serif"
+                    font-size="11" font-weight="600" fill="#8899bb"
+                    letter-spacing="0.5">GSP TECH</text>
+            </svg>
+          </div>
+
+          <!-- Dell — 原版 logo 圖片 -->
+          <div class="logo-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYCAMAAACJuGjuAAAC4lBMVEUBf8IGgsOAv+ElkcsWise93u/////t9vtCoNI0mc7h8Pj7/f5qtNtfrtj2+v2RyOUDgMIIg8SazOe22u4PhsUcjcjH4/LR6PQgj8k+ntHn8/nm8vk3ms9nstr6/P73+/1crdgJg8Sfz+j+/v8Cf8IejsnK5PKo0+oKhMRBn9Hp9PoYi8dvttz4+/283e+gz+iCwOFMpdQtlc15u9/8/f7f7/dKpNPb7fbV6vWi0Ol4u95OptQTiMYNhcWr1evz+fz9/v/M5fOIw+NFodIHgsMmksvT6fTv9/tjsNkQh8ZPptXw9/uXy+YFgcOz2e1Wqta73e8Rh8bo8/mPx+Qpk8y02e3X6/XW6vXN5vMEgcNQp9Xx+PyKxOOJxOMxl80ViccymM6ezugzmM7g7/j1+v2k0ekMhcXC4PC+3u/k8fk6nNC32+4Uicfl8vkXisfi8Pj5/P5mstry+PxVqdaZzOcdjcnJ5PLU6fUok8sOhsWn0+ofjslDoNIjkMrP5/QZi8jj8fghj8pIo9OOxuTc7fcajMhYq9c9ndCt1uvS6PTZ7PbQ5/TG4vGs1euczeew1+wbjMharNd8vd/q9Pqv1+zL5fNdrdgqlMzF4vH0+fzA3/Dd7vcrlMwvls1NpdQkkcpAn9F2ut6bzec/ntFbrNhstdze7vcslcyHw+Jgr9nr9fq53O642+5EodKUyeXs9fqp1Ophr9k2ms+u1uyBwOGdzui12u0SiMYnkssLhMR/vuBLpNSSyOVJo9N6vN9yuN2q1OtttdxrtNtzuN01mc6MxeMikMql0umDweFTqNY8ndBRp9VZq9fE4fFps9um0upwt92Vyuax2OyTyeU5m8+y2O2/3/DY6/ZXqtd/v+Du9vuh0Ok4m89isNna7PYuls3I4/I7nNBlsdqFwuIwl82WyuaGwuJksdqQx+Rxt93B4PB7vN+EweJGotNerth3ut5HotPO5vPD4fGYy+aNxuR+vuBY1xO6AAAQXUlEQVR42u3deYBU9WHA8bccjyCKi+KBhmOzS6ISbLAguIgiAp4IEqOiBoyieIK1q0h0g1e8MMY7gkGMWomKGq8ojVpNTU2i1oQ2alI1TW3S9EjS8/8KonLs7Pv9Zt7MvNl8Pn+zv/ntmy+zb37vShIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoECaevW2Echdn75pv0/YDOSs/zZpmg7Y1oYgV9sNTDfYvtm2IDeDdkg/tONgm4Oc7LRz+rFddrVByMWQ3dJN7f5Jm4QcDB2Wbm74CBuFSrV8Kt1Ka682G4aKjPx02pXP7GHTUIE990q7tvMoG6fmPptWZvTef/K5oWP2aan7L9L2p2NLTnLcPjXZVjvm99vsm/FS43t8WBsNmLBf+8T96/h7TDqgu+kdOFFYjRnWBpMPmnLw1Pr8GtOmdz+1se3Catyw1jvkgEMPq/1vcfgRmRM7coawGjms9btdR81squ3uVfvkgGnNOlpYjR3W+2Z//pja/QpHfyFsUsf2Flajh5WmrbMm1ug3OOa40DlVeoqWsAoQ1vuO325ODX6BE06M+O66rbB6QFhpOmFMtac/56TWqBl9sVlYPSCsNN17blVnP29W7JfWk4XVI8JKJ39pp+pN/pRTI2ezS+9EWD0jrDSd395cpbmPmB85ldNOt4/Vc8JK0wVVuRRrxpTYw07tVd5WwqpxWFX50OpzRuQkzjzLAmlPCytNzz4n53mfdW7kDM5YmAir54WVLsr35POh50Wu127flAirJ4aVjv6z/Ca9yRVeYc7/81psK2HVI6w07cjrlJoLLox85cUXJcLquWGlfZfkMuUtrvDK9uVJibB6cljpp/vksXs1rMarDMIqfFjpsRdXOt+urvDq1l6XJMLq8WGliyrc2+n8Suzi7NJEWH8EYaWXXlbJbC/vF/lyV2SekLywWVg9Iaz0yq+WPde29rFxr3XgVZljXj37mtOF1RPCSq8t9yqx7q/w6sJ12ZcTrl9oXXaxsHpCWOn15Z1jcNFxka/ztczVjUE3fHAUsb+wekJY6dfLuU3HmEPiXmRse+ar3Ljzxn87/CZh9YSw0pvL2L2aHPcStxycOeYp23x8KLGXsHpCWJNjz4UffGvkK9yWfSu/2wdutjrfIqzGDys98RtRkzzm2NwPS251muAdC4XV+GGl02PuWXXV8rjBl4/IHLLPiq1+6s5vCqvxw0qvCJ7hnClxV3il41dmjjl3XFfn1twlrNqFtaKzpFX97x5z1bfuWXBLWbtZ9wZOcN7esd85s29Kcl/XV2EM+AthFer416iZHfdHl3V/2Dk0cyNHHturuYKPwI4mYRUorPVWf/vSyLKODBn2geFxgz6Yvcqw/0Pd/Pyaw4RVrLCSpPnhA6LWmlqzb9HR9EhkrBeOzBxzn/HdjjChU1gFC+t9nR0xJ+EtzjrzIPoKr/2yv2velXWLtkfvFlbhwkqSy74T0UHG5RWxV3gNfCz7U/Vz2d8wR28nrOKFlSR7Tgg/ubPb72+xV3ht83jm3JY8ETRSqaeGCaueYSWDngw+a2pK6VFanor8M/jdpzNn9kzo+RHXrBVW8cJ6/0Mr9G/Y6JJH9Eo8ZKL0sthfZq4yJN8LPz/ioJ2EVcCwkoUPBb6Bz5ZKc6+4rvo9lzmntudjvrOeeYqwChhWMqcj7P2b3/X1YH81IK6r47NPpD/9hcjjjUOEVcCwkqQ97P17sqvdq9grvPZbmzmdkQdFjrnDVGEVMqzkxaBDx/22PrDTuSwugeEBN4V4+NG4MYd93z5WUcMK/Mz66y1/7LnIK7xOfSl7KrF/Wm+527fC4oaV/CDoHJfNz0yPvsIr4LZXg74U+Wdwl7+xjlXksNpeDnkXry5jBfPj440/zL6V/AW3RXb1wulW3gsdVtIScj38PZv8wLTFkWc4/yh7Ej+OvDdN65Rmh3QKHlYy7fyAOD7+SndX5BVey1ZlTyH2wND5r9RpWwkrxqsBb+WIj3avIq/wOi17lWHG9pF/BsevToTVAGElAZdtrfngXz793bgEzvt+9qsvfS2yqzVPJ8JqiLBGZl9gc96G++3FXuEVcnPtk7eJ7KpjRiKsxggreT777Vz//LnYK7xWBNz2asTAuDFHP1bnbSWsCFOvy3xDj0xm/CAugdYp2asM0btXl76UCKtxwkoey3xHF8U+wyvk5trnxF41dv3SRFiNFFbTuOzV87gEFj+T/apzx0V2dcOgzDE7pwurQGElf5t9yDcqgdcDbq91VeRzwQa8mD3mJZkHsoVV07AGRZ5ZkBHhT7JfMfqi/AcDHhb9YvaBbGHVdr/hpzl2tVdAAoPX5XTQedOvAn8XMI6wahvW3+fX1YKAO+M+E3tLyZ8Nzhxz3hupsAoXVvJmXl11BDzCa8wRcWN2c9D5IyvDvgoIq8Zh/TCfrA58K/ul2n4euXt1/uHZg74V+FVAWDUO65Jcugq4uXYy6ZrIQa9cnd1q8MFxYdU4rJaBOXS1Lvu2V0nvyPO50hXZT42aFH7uobBqvZrct+KsAm6unSSX/yL/fbbMVVFh1TGsJyvtavbdAbtXsafLD98uj1VRYdUxrFcr7Oq2gIeStPxD5KDnvp09aNyzEYVV67BOrnCVIeCZv9GXTFyfvSQWtCoqrDqGdXprBVkNfyfgFYbMjhz1tOx7tIWtigqrjmElZ5bf1bu/DPktIq9IHfDZgI/Z2PNPhVX7sKaX3dXigFWG6Js9PBrwON+35qfCKnxY15f/iTUlc/Ab/zFyyGs7c1wVFVY9w3qogn2sR5q7H/tXu0cOeFT2QedJT5QzU2HVPKwDKggrvbXb/ezYK1JDDjp3lvenW1iNFVb6Run9rK0e4pV5JDvgqvwhe6XCaoyw1lS2kLWs1JrTqAWRI43PPugccq6osBp/532DcRd1vSJwauQ4Z2ffWjl2VVRYjbncsFG/X3Ux6k3zY3evsi9HjF4VFVY9wzq30rDS5ftu9dFyRezuVcDliPGrosJq1EM6Hy6W/9PmY+4feZVremXAEv7M+amwGiisU/I4g3TzJ82vvDPyx9dk7161tVf2H0BYtQ7rplzOTU6f/XgFauby/HevylsVFVYdw3oyn7DS1zeeP9P8XuRHy/KA6zBWLU6F1WBhnZFTWGnfDUdjlnw98se26V+9VVFh1S+sluF5hZVee2MZV6QGXDIRea6osAoR1sNpfu5/5nuRt8DNuk/felPvyWNuwqpxWO/lGFZ6SOT5LPNfzZ7gqNdSYTVgWG+m9bMo4Iko/zwuFVYDhnVWHbtakf1ElApXRYVVt7B+Xb+uAq5IrXRVVFj1Cqvl0XplNf++7NktWZff6wmrpmFtm/mGDKtOV+Pm1mJVVFh1Cqsp+5ypFVXpqu+8gIWQqIcjtgqrQGEdmr0uvvCN+uxeRa6KvvYbYRUnrEHjM9+wXydTc9+/Hzgie2pTb4ga8pEm93kvUFg3Z79j6x95cvv8XLu69PHsmcWdKzr6XzxAoEhhXZx9esvoDQ9pOnlcjl0tGBWwKhp1vvylbyfCKlJYAV/mz/7gX/bJ7RSI9LfZBwcjHzHwxsJEWEUK652AN+3Dxabo2/6XEHJ3mshV0Y1fBIRVlLBWB3wsbPLo3thny3X9R+uT2fOadGtUqY/V8LiqsALssSzk02CTH4h9GmaZu1dxq6KLHk+EVaiwmj8T8r5tdsHg0ztW2NWzAbtXB0etis46JxFWscIKuu7v3bYtdn4mV5DV6EMDphW3KrrpWYLCKkRYzwe9cf+65Y+dcGJVz70aFLUquvyq2h5XFVbAwEHfux7d+uGDFx1XZlf/FnDuVdy5oltc4yqs+ofV1ivsrevV1Xe28m56FHJv5bhV0S1vISKsuoc1I/APzvJzuqzy38fGdzU+4Galr8asira+15wIq1hhLQ190vfnSwxweb/4sna5MetbatRlruf/qNZHKYSV5eHdQpceR5YaonNZfFklbqL1oSU/ixnsum8mwipWWC3/EfyH7L3So6x9Ob6sB7t7iEnvCTFDHXVYIqxihXVJ+Or57MH5rTd9sMs2puRo994Ss3vV9Q1whVW/sFbFPIkyYznz7vi7KQx7oNSvGXNf0SMOr/3hL2F1m1VHzPv3leaM4XbaObqs1q7WLyLPFe1q90pY9Qtrzu++FnU4pvXe7GXyMm6p8Nutcx11R8wATyxJhFWcsH55UuyDmB4JGXbo6OiyvrzlQukpiyJ+evLNbYmwChLW0pkd8ScW3zkpaH79T40e+YzNvxNEPW3pxBPqcfjrjzGsFZ0lreq/5103tT91R1lXOo/9cehi64LosY/f5Jys5t/ErIpO712lbRUmPKxTp1Woqd5hVcsXww8PTYke/P5nPjruGHWu6LrB9d1W4WFVbFoPDWtZS8Qcfz8wdvjZ/ctYFR37h7ZEWI0dVr9VUZOcG3vv7XT5c9Grov3+s+7bSlgVmrxv5Cz3j37g4Xn3Ra7dL+tMhNXoYf0heprx14a1fuupmH/+8tpEWI0e1jVtZUx04hFVnNHY9kJsK2FVZMHasma6+rqqzeiWTyTCaviwdnm6zKkuuaZKM/qvyxJhNXxY744qe66VXRtW0mlrE2E1fFiLdq3oSMcvcp/QgPbibCthlW1c78qmO216zhOaPSQRVuOHNeGCSuc76Tu5Tuj4XRNhNX5YF87LYcZDc7zJ8n57JMJq/LBmTcplyvfOrv3ulbAKHNZP8zpVY9fjc5nPuWclwmr8sIYfmt+k4+7sUcJrX02E1fhhjV+Z67SHnlfphEJu9SCswoe17uic53317rX//BRW0cI6Ymhb7hO/8Y4KJnTm24mwGj+ss0dWY+ZlnLL8of9emgir4cOqxsfVB24fWN6MOpoSYTV6WAP+Z1T1Jv/SojJmNPD3hf1PKKzwNdGVVZ39vFnRMwp5zI6wCh7WVw6u9vRn/G/klPaelwirwcN6bWJbUn2vRj3OoqMpEVZDhzX5qLOS2oh4nMXwB4r9RUdYmetEJ/VOaib4cRZ3rkyE1cBhDX9h4oyklgJPWV6zfyKshg3rwddHTEpq7pXsx1m0fntOIqzGDGvsQVMOnpHUxbSsB3odOLMBFpOFtZVhE/b7ydVrk/rJeJzF+H0SYTVUWKPX3PDzd353TFNSb90+zuILRyfCqm1YPciepe6yXOLu2hBm5G1ddtXFw0sgRsunuujqutU2DJXa+tqwo462VajckN3sXlENmz3O4sRXbBByMmiHj7p68xs2B/nZbuMpy+sOsy3I04bHWYzt1WZLkK8+fQPurg3Rmv6v00YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgB7j/wHUO2x+4mRAoAAAAABJRU5ErkJggg=="
+                 alt="Dell" style="height:36px;width:auto;">
+          </div>
+
+        </div>
+        </div><!-- /.logo-strip-inner -->
+      </div>
+
+
+      <!-- stats strip -->
+      <div style="display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin:2rem 0 2.5rem;padding-top:1.75rem;border-top:1px solid var(--border);">
+        <div style="text-align:center">
+          <div style="font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--fg)">15+</div>
+          <div style="font-size:0.72rem;color:var(--dim);margin-top:0.2rem">年工作經驗</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--fg)">6</div>
+          <div style="font-size:0.72rem;color:var(--dim);margin-top:0.2rem">間企業歷練</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--fg)">3</div>
+          <div style="font-size:0.72rem;color:var(--dim);margin-top:0.2rem">跨越領域</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--fg)">100+</div>
+          <div style="font-size:0.72rem;color:var(--dim);margin-top:0.2rem">跨團隊協作</div>
+        </div>
+      </div>
+
+      <!-- career timeline — 職涯硬體足跡 -->
+      <div class="career-timeline">
+        <div class="tl-line"></div>
+
+        <!-- Qisda + Elite -->
+        <div class="tl-row">
+          <div class="tl-year">2010<br>2012</div>
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-body">
+            <div class="tl-company">Qisda · Elite Computer</div>
+            <div class="tl-role">Project Specialist</div>
+            <div class="tl-tags">
+              <span class="tl-tag">Display Monitor</span>
+              <span class="tl-tag">X86 Pad</span>
+              <span class="tl-tag">Netbook</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LC Futurecenter 第一段 -->
+        <div class="tl-row">
+          <div class="tl-year">2012<br>2015</div>
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-body">
+            <div class="tl-company">LC Futurecenter</div>
+            <div class="tl-role">Staff Project Manager</div>
+            <div class="tl-tags">
+              <span class="tl-tag">ThinkPad T Series</span>
+              <span class="tl-tag">Mobile Workstation P</span>
+              <span class="tl-tag">Commercial NB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GSP Tech -->
+        <div class="tl-row">
+          <div class="tl-year">2015<br>2018</div>
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-body">
+            <div class="tl-company">GSP Tech <span style="font-size:0.68rem;font-weight:400;color:var(--muted);font-family:var(--mono);">· Taiwan Startup</span></div>
+            <div class="tl-role">Product Manager</div>
+            <div class="tl-tags">
+              <span class="tl-tag">Talkimate SPK Mic</span>
+              <span class="tl-tag">Kickstarter Crowdfunding</span>
+              <span class="tl-tag">Amazon Selling Channel</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LC Futurecenter 第二段 -->
+        <div class="tl-row">
+          <div class="tl-year">2018<br>2021</div>
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-body">
+            <div class="tl-company">LC Futurecenter</div>
+            <div class="tl-role">Advisory Project Manager</div>
+            <div class="tl-tags">
+              <span class="tl-tag">ThinkPad T Series</span>
+              <span class="tl-tag">Mobile Workstation P</span>
+              <span class="tl-tag">Technical PM</span>
+              <span class="tl-tag">Development PM</span>
+              <span class="tl-tag">Product Core Team</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dell — accent row -->
+        <div class="tl-row tl-row--accent">
+          <div class="tl-year">2021<br>2026</div>
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-body">
+            <div class="tl-company">Dell Technology</div>
+            <div class="tl-role">Advisory Project Manager</div>
+            <div class="tl-tags">
+              <span class="tl-tag">PowerEdge R6610</span>
+              <span class="tl-tag">PowerEdge R7620</span>
+              <span class="tl-tag">Edge Server</span>
+              <span class="tl-tag">NPI Budget</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════ ABOUT ══════════════════ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-num">1.0</span>
+        <span class="section-title">About</span>
+      </div>
+      <h2 class="section-h2">一段持續進化的故事</h2>
+      <p class="section-sub">
+        從科技法律出發的光華商場 DIY 玩家踏入台灣最肝苦產業，在硬體 NPI 的世界裡磨出產品研發的技術直覺，在無數的電話會議中淬鍊出說故事的藝術，再到 AI 自動化時代的自我重塑。每一次選擇的結果，是從來沒有放棄的跨界累積。
+      </p>
+      <div class="about-grid">
+        <div class="about-card" data-n="01">
+          <div class="card-num">01 · ODM</div>
+          <h3>豐富的 ODM 專案經驗</h3>
+          <p>NB、Server、Display、Workstation 跨多產品線，主導超過 10 世代 NPI 全流程，從 RFQ 到 MP 無斷點交付。</p>
+        </div>
+        <div class="about-card" data-n="02">
+          <div class="card-num">02 · Brand</div>
+          <h3>品牌廠工作模式理解</h3>
+          <p>在 Dell 台灣直接對接品牌端，熟悉品牌採購決策、工程需求轉譯與跨時區溝通節奏。</p>
+        </div>
+        <div class="about-card" data-n="03">
+          <div class="card-num">03 · AI</div>
+          <h3>AI 工具應用實作</h3>
+          <p>n8n 自動化流程、Claude Code Vibe Coding、LLM prompt 工程，將 AI 工具真正落地進日常工作。</p>
+        </div>
+        <div class="about-card" data-n="04">
+          <div class="card-num">04 · Problem</div>
+          <h3>問題解決能力</h3>
+          <p>300+ PCR 處理經驗，跨部門衝突解決，擅長把複雜的技術與商業問題說得讓所有人聽懂。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ EXPERIENCE ══════════════════ -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-num">2.0</span>
+        <span class="section-title">Experience</span>
+      </div>
+      <h2 class="section-h2">職涯軌跡</h2>
+
+      <div class="exp-item">
+        <div class="exp-period">2021 — 2026</div>
+        <div>
+          <h3>Advisory Project Manager</h3>
+          <div class="exp-co">Dell Technology (Taiwan)</div>
+          <p class="exp-desc">負責 Dell Server Platform HW/SW NPI 全程專案管理，協調逾 100 個跨部門工程團隊。主導 ODM 管理、NRE 預算審計、Statement of Work 整合，並推動內部 IT 工具開發（SW Spec + UI/UX 優化）。</p>
+          <div class="tag-row">
+            <span class="tag">NPI Management</span>
+            <span class="tag">ODM</span>
+            <span class="tag">Budget Planning</span>
+            <span class="tag">Server Platform</span>
+            <span class="tag">Edge SW</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2018 — 2021</div>
+        <div>
+          <h3>Advisory Project Manager</h3>
+          <div class="exp-co">LC Futurecenter</div>
+          <p class="exp-desc">Lenovo Technical PM 與 Dev. PM 角色，管理 300+ PCRs/generation 的範疇變更，建立 end-to-end 產品生命週期解決方案，主導全球 Offering Matrix 管理。</p>
+          <div class="tag-row">
+            <span class="tag">Lenovo TPM</span>
+            <span class="tag">PCR Management</span>
+            <span class="tag">Product Lifecycle</span>
+            <span class="tag">ODM Collaboration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2015 — 2018</div>
+        <div>
+          <h3>Product Manager</h3>
+          <div class="exp-co">GSP Tech Co., Ltd</div>
+          <p class="exp-desc">從零到一主導 Talkimate SPK Mic 產品開發，完成 Kickstarter 群眾募資上線，YT 品牌影片 3 萬觀看，Amazon 4/5 星評價，完整執行 Go-to-Market 策略。</p>
+          <div class="tag-row">
+            <span class="tag">Product Planning</span>
+            <span class="tag">Kickstarter</span>
+            <span class="tag">Go-to-Market</span>
+            <span class="tag">Brand Building</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2012 — 2015</div>
+        <div>
+          <h3>Staff Project Manager</h3>
+          <div class="exp-co">LC Futurecenter</div>
+          <p class="exp-desc">ThinkPad 商務 NB 與 Mobile Workstation 工程開發管理，跨功能問題解決與流程改善提案。</p>
+          <div class="tag-row">
+            <span class="tag">ThinkPad</span>
+            <span class="tag">Workstation</span>
+            <span class="tag">Process Improvement</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2010 — 2012</div>
+        <div>
+          <h3>Project Specialist</h3>
+          <div class="exp-co">Elite Computer · Qisda Corporation</div>
+          <p class="exp-desc">Display Monitor、X86 Pad/Netbook 工程開發專案執行，累積硬體產品開發早期職涯基礎。</p>
+          <div class="tag-row">
+            <span class="tag">Display</span>
+            <span class="tag">Netbook</span>
+            <span class="tag">HW Engineering</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ SKILLS ══════════════════ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-num">3.0</span>
+        <span class="section-title">Skills</span>
+      </div>
+      <h2 class="section-h2">能力地圖</h2>
+      <!-- Constellation SVG -->
+      <svg class="const-svg" viewBox="0 0 680 370" xmlns="http://www.w3.org/2000/svg" aria-label="能力星座圖：Technical PM、Product、AI & Domain 三個核心技能群">
+
+        <!-- ── 核心間連線 ── -->
+        <line x1="155" y1="198" x2="338" y2="112" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="338" y1="112" x2="504" y2="212" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="155" y1="198" x2="504" y2="212" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+        <!-- ── Technical PM 衛星連線 ── -->
+        <line x1="155" y1="198" x2="38"  y2="115" stroke="#60a5fa" stroke-width="0.8" opacity="0.22"/>
+        <line x1="155" y1="198" x2="33"  y2="222" stroke="#60a5fa" stroke-width="0.8" opacity="0.22"/>
+        <line x1="155" y1="198" x2="68"  y2="320" stroke="#60a5fa" stroke-width="0.8" opacity="0.22"/>
+        <line x1="155" y1="198" x2="178" y2="338" stroke="#60a5fa" stroke-width="0.8" opacity="0.22"/>
+        <line x1="155" y1="198" x2="260" y2="295" stroke="#60a5fa" stroke-width="0.8" opacity="0.22"/>
+
+        <!-- ── Product 衛星連線 ── -->
+        <line x1="338" y1="112" x2="198" y2="45"  stroke="#a78bfa" stroke-width="0.8" opacity="0.22"/>
+        <line x1="338" y1="112" x2="338" y2="33"  stroke="#a78bfa" stroke-width="0.8" opacity="0.22"/>
+        <line x1="338" y1="112" x2="468" y2="42"  stroke="#a78bfa" stroke-width="0.8" opacity="0.22"/>
+        <line x1="338" y1="112" x2="562" y2="88"  stroke="#a78bfa" stroke-width="0.8" opacity="0.22"/>
+        <line x1="338" y1="112" x2="245" y2="185" stroke="#a78bfa" stroke-width="0.8" opacity="0.22"/>
+
+        <!-- ── AI & Domain 衛星連線 ── -->
+        <line x1="504" y1="212" x2="618" y2="148" stroke="#6ee7b7" stroke-width="0.8" opacity="0.22"/>
+        <line x1="504" y1="212" x2="625" y2="262" stroke="#6ee7b7" stroke-width="0.8" opacity="0.22"/>
+        <line x1="504" y1="212" x2="562" y2="332" stroke="#6ee7b7" stroke-width="0.8" opacity="0.22"/>
+        <line x1="504" y1="212" x2="415" y2="332" stroke="#6ee7b7" stroke-width="0.8" opacity="0.22"/>
+        <line x1="504" y1="212" x2="405" y2="188" stroke="#6ee7b7" stroke-width="0.8" opacity="0.22"/>
+
+        <!-- ── Technical PM 衛星節點 ── -->
+        <circle cx="38"  cy="115" r="3.5" fill="#60a5fa" opacity="0.85"/>
+        <text x="46"  y="119" fill="#4a7899" font-size="10.5" font-family="Inter,sans-serif">NPI Program Mgmt</text>
+        <circle cx="33"  cy="222" r="3.5" fill="#60a5fa" opacity="0.85"/>
+        <text x="41"  y="226" fill="#4a7899" font-size="10.5" font-family="Inter,sans-serif">ODM / NRE Audit</text>
+        <circle cx="68"  cy="320" r="3.5" fill="#60a5fa" opacity="0.85"/>
+        <text x="76"  y="324" fill="#4a7899" font-size="10.5" font-family="Inter,sans-serif">HW Platform Dev</text>
+        <circle cx="178" cy="338" r="3.5" fill="#60a5fa" opacity="0.85"/>
+        <text x="186" y="342" fill="#4a7899" font-size="10.5" font-family="Inter,sans-serif">Edge SW Solution</text>
+        <circle cx="260" cy="295" r="3.5" fill="#60a5fa" opacity="0.85"/>
+        <text x="260" y="312" text-anchor="middle" fill="#4a7899" font-size="10.5" font-family="Inter,sans-serif">IT Tool Dev</text>
+
+        <!-- ── Product 衛星節點 ── -->
+        <circle cx="198" cy="45"  r="3.5" fill="#a78bfa" opacity="0.85"/>
+        <text x="198" y="35"  text-anchor="middle" fill="#6d5fa8" font-size="10.5" font-family="Inter,sans-serif">Product LCM</text>
+        <circle cx="338" cy="33"  r="3.5" fill="#a78bfa" opacity="0.85"/>
+        <text x="338" y="23"  text-anchor="middle" fill="#6d5fa8" font-size="10.5" font-family="Inter,sans-serif">Go-to-Market</text>
+        <circle cx="468" cy="42"  r="3.5" fill="#a78bfa" opacity="0.85"/>
+        <text x="468" y="32"  text-anchor="middle" fill="#6d5fa8" font-size="10.5" font-family="Inter,sans-serif">PCR / Scope</text>
+        <circle cx="562" cy="88"  r="3.5" fill="#a78bfa" opacity="0.85"/>
+        <text x="570" y="92"  fill="#6d5fa8" font-size="10.5" font-family="Inter,sans-serif">Cross-func</text>
+        <circle cx="245" cy="185" r="3.5" fill="#a78bfa" opacity="0.85"/>
+        <text x="253" y="189" fill="#6d5fa8" font-size="10.5" font-family="Inter,sans-serif">Kickstarter</text>
+
+        <!-- ── AI & Domain 衛星節點 ── -->
+        <circle cx="618" cy="148" r="3.5" fill="#6ee7b7" opacity="0.85"/>
+        <text x="610" y="144" text-anchor="end" fill="#3d8a6a" font-size="10.5" font-family="Inter,sans-serif">n8n Automation</text>
+        <circle cx="625" cy="262" r="3.5" fill="#6ee7b7" opacity="0.85"/>
+        <text x="617" y="258" text-anchor="end" fill="#3d8a6a" font-size="10.5" font-family="Inter,sans-serif">Vibe Coding</text>
+        <circle cx="562" cy="332" r="3.5" fill="#6ee7b7" opacity="0.85"/>
+        <text x="554" y="328" text-anchor="end" fill="#3d8a6a" font-size="10.5" font-family="Inter,sans-serif">LLM Tool Adoption</text>
+        <circle cx="415" cy="332" r="3.5" fill="#6ee7b7" opacity="0.85"/>
+        <text x="407" y="328" text-anchor="end" fill="#3d8a6a" font-size="10.5" font-family="Inter,sans-serif">Financial Law</text>
+        <circle cx="405" cy="188" r="3.5" fill="#6ee7b7" opacity="0.85"/>
+        <text x="413" y="184" fill="#3d8a6a" font-size="10.5" font-family="Inter,sans-serif">Legal-Tech PM</text>
+
+        <!-- ── 核心節點脈衝環 ── -->
+        <!-- Tech 脈衝 -->
+        <circle cx="155" cy="198" r="16" fill="none" stroke="#60a5fa" stroke-width="1.2">
+          <animate attributeName="r"       values="16;32;16" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="155" cy="198" r="16" fill="none" stroke="#60a5fa" stroke-width="0.8">
+          <animate attributeName="r"       values="16;32;16" dur="3s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Product 脈衝 -->
+        <circle cx="338" cy="112" r="16" fill="none" stroke="#a78bfa" stroke-width="1.2">
+          <animate attributeName="r"       values="16;32;16" dur="3s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="338" cy="112" r="16" fill="none" stroke="#a78bfa" stroke-width="0.8">
+          <animate attributeName="r"       values="16;32;16" dur="3s" begin="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" begin="2s" repeatCount="indefinite"/>
+        </circle>
+        <!-- AI 脈衝 -->
+        <circle cx="504" cy="212" r="16" fill="none" stroke="#6ee7b7" stroke-width="1.2">
+          <animate attributeName="r"       values="16;32;16" dur="3s" begin="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" begin="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="504" cy="212" r="16" fill="none" stroke="#6ee7b7" stroke-width="0.8">
+          <animate attributeName="r"       values="16;32;16" dur="3s" begin="0s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" begin="0s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- ── 核心節點本體 ── -->
+        <circle cx="155" cy="198" r="10" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+        <circle cx="155" cy="198" r="5"  fill="#60a5fa"/>
+        <text x="155" y="222" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="600" font-family="Inter,sans-serif">Technical PM</text>
+
+        <circle cx="338" cy="112" r="10" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+        <circle cx="338" cy="112" r="5"  fill="#a78bfa"/>
+        <text x="338" y="97" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="600" font-family="Inter,sans-serif">Product</text>
+
+        <circle cx="504" cy="212" r="10" fill="rgba(110,231,183,0.15)" stroke="#6ee7b7" stroke-width="1.5"/>
+        <circle cx="504" cy="212" r="5"  fill="#6ee7b7"/>
+        <text x="504" y="236" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="600" font-family="Inter,sans-serif">AI &amp; Domain</text>
+      </svg>
+
+      <!-- 圖例 -->
+      <div class="const-legend">
+        <span class="const-legend-item"><span class="const-legend-dot" style="background:#60a5fa"></span>Technical PM</span>
+        <span class="const-legend-item"><span class="const-legend-dot" style="background:#a78bfa"></span>Product</span>
+        <span class="const-legend-item"><span class="const-legend-dot" style="background:#6ee7b7"></span>AI &amp; Domain</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ PROJECTS ══════════════════ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-num">4.0</span>
+        <span class="section-title">Projects</span>
+      </div>
+      <h2 class="section-h2">親手建造的東西</h2>
+
+      <a href="https://www.kickstarter.com/projects/595987921/talkimate-the-stylish-accessory-for-smartphone-wal/rewards?lang=zh" target="_blank" class="project-card">
+        <div>
+          <h3>Talkimate — Kickstarter 群眾募資產品</h3>
+          <p>從零規劃 SPK Mic 硬體產品，完成群眾募資、品牌建立與 Amazon 銷售通路管理，YT 品牌影片 3 萬觀看。</p>
+          <div class="tag-row" style="margin-top:0.6rem">
+            <span class="tag">Product Planning</span><span class="tag">Kickstarter</span><span class="tag">Brand Building</span><span class="tag">Amazon</span>
+          </div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <div class="project-card">
+        <div>
+          <h3>Dell Internal IT Tool Development</h3>
+          <p>主導內部工具 SW Spec 整合與 Use Story 撰寫，協調開發團隊，推動 UI/UX 功能優化，提升工程流程效率。</p>
+          <div class="tag-row" style="margin-top:0.6rem">
+            <span class="tag">SW Spec</span><span class="tag">UI/UX</span><span class="tag">Dev Coordination</span>
+          </div>
+        </div>
+        <span class="project-arrow" style="color:var(--dim)">—</span>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>Edge / Healthcare / GPU Platform — Pioneer Feature Dev</h3>
+          <p>在 Dell 主導先驅功能開發，涵蓋 Healthcare 解決方案、GPU Card 整合與 Edge Solution Platform，建立跨部門緊急修復排程機制。</p>
+          <div class="tag-row" style="margin-top:0.6rem">
+            <span class="tag">Edge Solution</span><span class="tag">Healthcare</span><span class="tag">GPU</span><span class="tag">NPI</span>
+          </div>
+        </div>
+        <span class="project-arrow" style="color:var(--dim)">—</span>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>Maxcareerportal — 本網站</h3>
+          <p>用 Open Design + Linear 設計語言、Vibe Coding 方式建立的個人職涯入口，從 DESIGN.md 到部署全程自主完成。</p>
+          <div class="tag-row" style="margin-top:0.6rem">
+            <span class="tag">HTML/CSS</span><span class="tag">Open Design</span><span class="tag">Vibe Coding</span><span class="tag">Claude Code</span>
+          </div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════ CONTACT ══════════════════ -->
+  <section id="contact">
+    <p class="contact-sub">歡迎聊聊合作機會、技術交流，或純粹打聲招呼</p>
+    <div class="contact-actions">
+      <a href="mailto:chientsungliu@gmail.com" class="social-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+      <a href="https://github.com/darcon25" target="_blank" rel="noopener" class="social-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/max-chien-tsung-liu-4b7042103/" target="_blank" rel="noopener" class="social-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 Max.CT.Liu · Built with intention</span>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#writing">Writing</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════ PRESENTATION OVERLAY ══════════════ -->
+  <div id="pres-overlay" role="dialog" aria-modal="true" aria-label="經驗分享簡報">
+
+    <!-- 頂部工具列 -->
+    <div class="pres-topbar">
+      <span class="pres-logo">Max.CT.Liu · 經驗分享</span>
+      <div class="pres-progress" id="pres-progress">
+        <!-- 由 JS 動態生成 -->
+      </div>
+      <button class="pres-close" onclick="closePresentation()" title="關閉 (ESC)">✕</button>
+    </div>
+
+    <!-- 主體（sidebar + stage） -->
+    <div class="pres-body">
+
+    <!-- 左側固定目錄 -->
+    <nav class="pres-sidebar" id="pres-sidebar">
+      <button class="pres-toc-item" onclick="presGoTo(0)">
+        <span class="pres-toc-num">00</span>
+        <span class="pres-toc-label">開場</span>
+      </button>
+      <button class="pres-toc-item" onclick="presGoTo(1)">
+        <span class="pres-toc-num">01</span>
+        <span class="pres-toc-label">打破迷思</span>
+      </button>
+      <button class="pres-toc-item" onclick="presGoTo(2)">
+        <span class="pres-toc-num">02</span>
+        <span class="pres-toc-label">心理準備</span>
+      </button>
+      <button class="pres-toc-item" onclick="presGoTo(3)">
+        <span class="pres-toc-num">03</span>
+        <span class="pres-toc-label">就業準備</span>
+      </button>
+      <button class="pres-toc-item" onclick="presGoTo(4)">
+        <span class="pres-toc-num">04</span>
+        <span class="pres-toc-label">職涯藍圖</span>
+      </button>
+      <button class="pres-toc-item" onclick="presGoTo(5)">
+        <span class="pres-toc-num">05</span>
+        <span class="pres-toc-label">結語 Q&amp;A</span>
+      </button>
+    </nav>
+
+    <!-- 投影區 -->
+    <div class="pres-stage">
+
+      <!-- Slide 0 · 開場 -->
+      <div class="pres-slide pres-slide-cover visible" data-index="0">
+        <div class="pres-chap-num">0</div>
+        <div class="pres-label">Max.CT.Liu · 經驗分享</div>
+        <div class="pres-title">法律系念到畢業了，然後呢？</div>
+        <div class="pres-subtitle">給不考國考、想走不同路的你</div>
+        <div class="pres-speaker-tag">
+          <span>15年台灣科技業專案經理經驗</span>
+          <span>中原財法89級校友</span>
+        </div>
+        <div class="pres-notes">
+          <div class="notes-label">SPEAKER NOTE</div>
+          簡單自我介紹，讓大家知道你是誰。法律系 → 硬體科技業 PM → Dell。
+          強調：「我不是特例，你也可以。」
+        </div>
+      </div>
+
+      <!-- Slide 1 · 破題 -->
+      <div class="pres-slide" data-index="1">
+        <div class="pres-chap-num">I</div>
+        <div class="pres-label"></div>
+        <div class="pres-title">打破「不考國考法律系還能幹嘛」的迷思</div>
+        <div class="pres-quote">法律系給你的不是法條記憶，而是邏輯推論、風險識別、文字精準度與架構化思考的能力。</div>
+        <ul class="pres-points">
+          <li>這些能力在法律以外的世界同樣是稀缺資源</li>
+          <li>不走傳統法律路，舞台反而更大</li>
+          <li>法律的訓練是你學習的基礎，不是包袱</li>
+        </ul>
+        <div class="pres-notes">
+          <div class="notes-label">SPEAKER NOTE</div>
+          點出法律系同學常有的焦慮：「不考國考是在逃避嗎？」
+          用自身例子破題：15年後回頭看，選擇商業路從沒後悔。
+        </div>
+      </div>
+
+      <!-- Slide 2 · 心理準備篇 -->
+      <div class="pres-slide" data-index="2">
+        <div class="pres-chap-num">II</div>
+        <div class="pres-label"></div>
+        <div class="pres-title">從「學術法學」<br>切換到「商業世界」</div>
+        <div class="pres-subtitle">進職場前，你需要三個心態轉變</div>
+        <ul class="pres-points">
+          <li><strong>接受沒有標準答案</strong> — 商業只有風險評估與成本效益，沒有申論題滿分</li>
+          <li><strong>解決問題的人</strong> — 你的價值是「在合規框架下，幫團隊把事做成」</li>
+          <li><strong>拆解問題說清楚</strong> — 企業裡要說商業語言，不是法條密碼</li>
+        </ul>
+        <div class="pres-notes">
+          <div class="notes-label">SPEAKER NOTE</div>
+          可以問問現場：「有沒有人被說法律系很難溝通？」
+          這三點是你進入職場後最常碰到的文化衝擊。
+        </div>
+      </div>
+
+      <!-- Slide 3 · 就業準備篇 -->
+      <div class="pres-slide" data-index="3">
+        <div class="pres-chap-num">III</div>
+        <div class="pres-label"></div>
+        <div class="pres-title">最大化文組能力優勢</div>
+        <div class="pres-subtitle">畢業前需要檢查的能力</div>
+        <ul class="pres-points">
+          <li><strong>有沒有考過英文檢定？</strong> — 程度夠嗎？能否通過面試英文的問題？</li>
+          <li><strong>科技知識</strong> — 對於產品規格以及開發有概念？懂拆解問題？</li>
+          <li><strong>簡報表達能力</strong> — 能否用系統性的思考清楚地傳遞給觀眾</li>
+        </ul>
+        <div class="pres-notes">
+          <div class="notes-label">SPEAKER NOTE</div>
+          重點強調：不需要懂程式碼，但要懂「系統邏輯」。
+          類比：法律的「構成要件 → 法律效果」就是 if/then 邏輯，跟資料流是同一件事。
+        </div>
+      </div>
+
+      <!-- Slide 4 · 職涯藍圖篇 -->
+      <div class="pres-slide" data-index="4">
+        <div class="pres-chap-num">IV</div>
+        <div class="pres-label"></div>
+        <div class="pres-title">文組科技業職涯</div>
+        <div class="pres-subtitle"></div>
+        <ul class="pres-points">
+          <li><strong>專案經理</strong> — 未來可以走往產品經理或是其他高階經理人</li>
+          <li><strong>合規法務</strong> — 安規工程師、人工智慧合規法務</li>
+          <li><strong>業務／採購</strong> — 對客戶的 Account Manager／供應鏈管理</li>
+        </ul>
+        <div class="pres-notes">
+          <div class="notes-label">SPEAKER NOTE</div>
+          可以提具體薪資範圍（如果方便的話）讓大家有感。
+          強調 Compliance 這條路門檻相對低、需求大、成長快。
+        </div>
+      </div>
+
+      <!-- Slide 5 · 結語 -->
+      <div class="pres-slide" data-index="5">
+        <div class="pres-chap-num">V</div>
+        <div class="pres-label"></div>
+        <div class="pres-title">法律是你的出身，<br>不是你的終點。</div>
+        <div class="pres-quote">每一次選擇的結果，是從來沒有放棄的跨界累積。</div>
+        <ul class="pres-points">
+          <li>AI 對你是阻力還是助力？</li>
+          <li>「學習力」才是讓你脫穎而出的關鍵</li>
+          <li>先做再說，不要嘴巴說說</li>
+        </ul>
+        <div class="pres-notes">
+          <div class="notes-label">SPEAKER NOTE</div>
+          收尾時放慢語速，留停頓。
+          開放 Q&A 前，先問：「有誰已經在想往非國考方向走的？」
+        </div>
+      </div>
+
+    </div><!-- /pres-stage -->
+    </div><!-- /pres-body -->
+
+    <!-- 底部導航 -->
+    <div class="pres-nav">
+      <button class="pres-notes-toggle" onclick="toggleNotes()" id="notes-toggle-btn">
+        📝 Speaker Notes
+      </button>
+      <span class="pres-counter" id="pres-counter">1 / 6</span>
+      <div class="pres-btn-group">
+        <button class="pres-btn" id="btn-prev" onclick="presNav(-1)">← 上一頁</button>
+        <button class="pres-btn" id="btn-next" onclick="presNav(1)">下一頁 →</button>
+      </div>
+    </div>
+
+  </div><!-- /pres-overlay -->
+
+  <script>
+    // ── Presentation State ──
+    const TOTAL_SLIDES = 6;
+    let currentSlide = 0;
+    let notesVisible = false;
+
+    function openPresentation() {
+      currentSlide = 0;
+      document.getElementById('pres-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      buildProgress();
+      renderSlide();
+      // 嘗試進入全螢幕
+      const el = document.getElementById('pres-overlay');
+      if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+    }
+
+    function closePresentation() {
+      document.getElementById('pres-overlay').classList.remove('active');
+      document.body.style.overflow = '';
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    }
+
+    function buildProgress() {
+      const bar = document.getElementById('pres-progress');
+      bar.innerHTML = '';
+      for (let i = 0; i < TOTAL_SLIDES; i++) {
+        const pip = document.createElement('div');
+        pip.className = 'pres-pip';
+        pip.id = 'pip-' + i;
+        bar.appendChild(pip);
+      }
+    }
+
+    function renderSlide() {
+      // 隱藏所有 slide
+      document.querySelectorAll('.pres-slide').forEach(s => s.classList.remove('visible'));
+      // 顯示當前
+      const target = document.querySelector(`.pres-slide[data-index="${currentSlide}"]`);
+      if (target) target.classList.add('visible');
+      // 更新 progress pips
+      document.querySelectorAll('.pres-pip').forEach((pip, i) => {
+        pip.classList.toggle('active', i === currentSlide);
+      });
+      // 更新 counter
+      document.getElementById('pres-counter').textContent = `${currentSlide + 1} / ${TOTAL_SLIDES}`;
+      // 按鈕狀態
+      document.getElementById('btn-prev').disabled = currentSlide === 0;
+      document.getElementById('btn-next').disabled = currentSlide === TOTAL_SLIDES - 1;
+      // ── Sidebar TOC spotlight ──
+      document.querySelectorAll('.pres-toc-item').forEach((item, i) => {
+        item.classList.remove('toc-active', 'toc-past', 'toc-future');
+        if (i === currentSlide)      item.classList.add('toc-active');
+        else if (i < currentSlide)  item.classList.add('toc-past');
+        else                         item.classList.add('toc-future');
+      });
+      // notes 狀態同步
+      syncNotes();
+    }
+
+    function presNav(dir) {
+      const next = currentSlide + dir;
+      if (next >= 0 && next < TOTAL_SLIDES) {
+        currentSlide = next;
+        renderSlide();
+      }
+    }
+
+    function presGoTo(index) {
+      currentSlide = index;
+      renderSlide();
+    }
+
+    function toggleNotes() {
+      notesVisible = !notesVisible;
+      syncNotes();
+      const btn = document.getElementById('notes-toggle-btn');
+      btn.style.color = notesVisible ? 'var(--accent)' : '';
+    }
+
+    function syncNotes() {
+      document.querySelectorAll('.pres-notes').forEach(n => {
+        n.classList.toggle('show', notesVisible);
+      });
+    }
+
+    // 鍵盤快捷鍵
+    document.addEventListener('keydown', (e) => {
+      const overlay = document.getElementById('pres-overlay');
+      if (!overlay.classList.contains('active')) return;
+      if (e.key === 'Escape')        closePresentation();
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); presNav(1); }
+      if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                    { e.preventDefault(); presNav(-1); }
+      if (e.key === 'n' || e.key === 'N') toggleNotes();
+    });
+  </script>
+
+</body>
+</html>
