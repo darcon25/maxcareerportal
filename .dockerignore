@@ -1,0 +1,18 @@
+# 不需要打包進公開 image 的檔案
+
+# git 與設定
+.git
+.gitignore
+.dockerignore
+Dockerfile
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+
+# 備份檔
+index.backup-*.html
+
+# 舊版子資料夾
+Maxcareerportal/
