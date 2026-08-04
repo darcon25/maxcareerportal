@@ -47,7 +47,7 @@ MaxCareerPortal 單檔靜態站（`index.html`）加入中／英雙語：
 | 專案卡片 | Talkimate (Kickstarter)／Dell Internal IT Tool／Edge・Healthcare・GPU Platform／Maxcareerportal |
 | nav／聯絡／頁尾 | 對應英文 |
 
-英文採履歷式簡潔專業語氣（bullet、精煉），非長篇敘事。先由 Claude 全部草擬，使用者潤飾。
+英文採履歷式簡潔專業語氣（bullet、精煉），非長篇敘事。**精簡但關鍵點不可漏**：中文版有提到的重點（職責、成果數據如 300 PCR/gen、Amazon 4/5 星、30 萬觀看、跨 30+ POC 協調等）英文版都要涵蓋，只是用更精煉的方式表達。先由 Claude 全部草擬，使用者潤飾。
 
 ## 範圍與非目標
 - 只動 `index.html`（單檔）與其內嵌 CSS／JS。不引入框架或建置流程。
