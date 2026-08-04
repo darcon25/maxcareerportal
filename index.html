@@ -2,6 +2,16 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem('site-lang');
+      var nav = (navigator.language || '').toLowerCase();
+      var lang = saved || (nav.indexOf('en') === 0 ? 'en' : 'zh');
+      var root = document.documentElement;
+      root.classList.add('lang-' + lang);
+      root.setAttribute('lang', lang === 'en' ? 'en' : 'zh-TW');
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#EDE8DC" />
   <link rel="canonical" href="https://maxliucareer.zeabur.app/" />
@@ -944,6 +954,24 @@
     }
     .pres-speaker-tag span:last-child { font-size: 1.05rem; color: var(--muted); }
 
+    /* ── i18n 語言切換 ── */
+    html.lang-zh .t-en { display: none !important; }
+    html.lang-en .t-zh { display: none !important; }
+    /* 語言切換按鈕 */
+    .nav-lang-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 0.5rem;
+      transition: color .2s, border-color .2s;
+    }
+    .nav-lang-btn:hover { color: var(--accent); border-color: var(--accent); }
+
   </style>
 </head>
 <body>
@@ -956,7 +984,8 @@
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <button class="nav-share-btn" onclick="openPresentation()">經驗分享 ✦</button>
+        <button class="nav-share-btn" onclick="openPresentation()" style="display:none">經驗分享 ✦</button>
+        <button class="nav-lang-btn" onclick="toggleLang()" aria-label="Switch language"><span class="t-zh">EN</span><span class="t-en">中</span></button>
       </div>
       <a href="#contact" class="nav-cta">Contact →</a>
     </div>
@@ -1665,6 +1694,15 @@
     const TOTAL_SLIDES = 6;
     let currentSlide = 0;
     let notesVisible = false;
+
+    function toggleLang() {
+      var root = document.documentElement;
+      var next = root.classList.contains('lang-en') ? 'zh' : 'en';
+      root.classList.remove('lang-zh', 'lang-en');
+      root.classList.add('lang-' + next);
+      root.setAttribute('lang', next === 'en' ? 'en' : 'zh-TW');
+      localStorage.setItem('site-lang', next);
+    }
 
     function openPresentation() {
       currentSlide = 0;
