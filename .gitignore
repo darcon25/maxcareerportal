@@ -17,3 +17,9 @@ Maxcareerportal/
 
 # 不需要部署的專案文件（選擇性忽略，保留也沒關係）
 # docs/
+
+# 履歷原始檔（含個人資訊，勿進 repo）
+Position_Product management ChienTsungLiu*.docx
+
+# SDD 進度暫存
+.superpowers/
