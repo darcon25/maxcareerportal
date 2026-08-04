@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#08090a" />
+  <meta name="theme-color" content="#EDE8DC" />
   <link rel="canonical" href="https://maxliucareer.zeabur.app/" />
   <meta property="og:url" content="https://maxliucareer.zeabur.app/" />
   <title>Max.CT.Liu — Legal-Tech PM · Curious by Design</title>
@@ -19,22 +19,23 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* ── Palette (OD color.md: name by purpose, not hue) ── */
-      --bg:           #08090a;   /* Linear exact bg, non-pure black */
-      --surface:      #111214;
-      --surface-hi:   #1a1c1f;
-      --border:       rgba(255,255,255,0.06);
-      --border-hi:    rgba(255,255,255,0.12);
-      --fg:           #ededed;   /* OD: not pure white */
-      --muted:        #888888;
-      --dim:          #4a4a4a;
-      /* accent max 2 visible uses/screen — OD rule */
-      --accent:       #6ee7b7;
+      /* ── Palette C：書布褐 (light, Claude-inspired warm) ── */
+      --bg:           #EDE8DC;   /* book cloth 暖米白 */
+      --surface:      #F8F5EE;
+      --surface-hi:   #F1EBDF;
+      --border:       rgba(38,35,29,0.10);
+      --border-hi:    rgba(38,35,29,0.20);
+      --fg:           #26231D;   /* 暖黑墨 */
+      --muted:        #56534B;   /* 內文，加深提升可讀性 */
+      --dim:          #7A7466;   /* 次要說明/標籤 */
+      /* accent max 2 visible uses/screen */
+      --accent:       #C15F3C;   /* 深赤陶 */
+      --accent-2:     #7C7A52;   /* 橄欖綠 */
       /* semantic only */
-      --success:      #34d399;
+      --success:      #5E7D53;
       /* hero glow colours */
-      --glow-1:       rgba(139,92,246,0.18);   /* violet */
-      --glow-2:       rgba(59,130,246,0.10);   /* blue */
+      --glow-1:       rgba(193,95,60,0.16);   /* terracotta */
+      --glow-2:       rgba(124,122,82,0.10);  /* olive */
       /* typography */
       --mono:         'JetBrains Mono', monospace;
       --sans:         'Inter', sans-serif;
@@ -62,7 +63,7 @@
     nav {
       position: sticky; top: 0; z-index: 100;
       border-bottom: 1px solid var(--border);
-      background: rgba(8,9,10,0.80);
+      background: rgba(237,232,220,0.82);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
@@ -125,7 +126,7 @@
     #hero::after {
       content: '';
       position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(38,35,29,0.04) 1px, transparent 1px);
       background-size: 28px 28px;
       pointer-events: none;
       mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, black, transparent);
@@ -141,15 +142,15 @@
       border-radius: 999px;
       font-size: 0.73rem; color: var(--muted);
       margin-bottom: 2rem;
-      background: rgba(255,255,255,0.03);
+      background: rgba(38,35,29,0.03);
       transition: border-color 0.15s, color 0.15s;
       cursor: default;
     }
-    .hero-chip:hover { border-color: rgba(255,255,255,0.2); color: var(--fg); }
+    .hero-chip:hover { border-color: rgba(38,35,29,0.2); color: var(--fg); }
     .hero-chip .chip-label {
       font-family: var(--mono); font-size: 0.66rem;
       padding: 0.1rem 0.45rem;
-      background: rgba(110,231,183,0.12);
+      background: rgba(193,95,60,0.12);
       color: var(--accent);        /* accent 使用點 2/2 */
       border-radius: 3px;
     }
@@ -165,7 +166,7 @@
     }
     /* gradient text on selected words */
     .hero-h1 .grad {
-      background: linear-gradient(90deg, #c4b5fd 0%, #93c5fd 100%);
+      background: linear-gradient(90deg, #C15F3C 0%, #A6803D 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -200,7 +201,7 @@
       background: transparent;
       transition: border-color 0.15s, color 0.15s;
     }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.25); color: var(--fg); }
+    .btn-outline:hover { border-color: rgba(38,35,29,0.25); color: var(--fg); }
 
     /* ── company logo strip — 乒乓光束邊框 ── */
     @keyframes beam-ping {
@@ -224,7 +225,7 @@
       background: linear-gradient(90deg,
         transparent 0%,
         transparent 28%,
-        rgba(110,231,183,0.9) 50%,
+        rgba(193,95,60,0.9) 50%,
         transparent 72%,
         transparent 100%
       );
@@ -296,14 +297,14 @@
       border: 1px solid var(--border-hi);
       border-radius: 12px;
       background: var(--surface);
-      box-shadow: 0 0 80px rgba(139,92,246,0.10), 0 0 40px rgba(59,130,246,0.06);
+      box-shadow: 0 0 80px rgba(193,95,60,0.08), 0 0 40px rgba(124,122,82,0.05);
     }
     /* 頂部光條 */
     .career-timeline::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      background: linear-gradient(90deg, transparent, rgba(38,35,29,0.15), transparent);
       border-radius: 12px 12px 0 0;
     }
     /* 垂直時間線 */
@@ -332,7 +333,7 @@
       text-align: right;
       font-family: var(--mono);
       font-size: 0.82rem;        /* 放大：0.6 → 0.82 */
-      color: #a0aec0;            /* 更亮的藍灰，清晰易讀 */
+      color: #8a8272;            /* 更亮的藍灰，清晰易讀 */
       line-height: 1.6;
       padding-top: 0.15rem;
       font-weight: 500;
@@ -352,8 +353,8 @@
     /* 節點本體：scale + 白光 spotlight */
     @keyframes tl-dot-spotlight {
       0%, 22%, 100% { transform: scale(1);    box-shadow: 0 0 0 transparent; }
-      5%            { transform: scale(1.65); box-shadow: 0 0 18px 7px rgba(255,255,255,0.32); }
-      14%           { transform: scale(1.2);  box-shadow: 0 0 10px 3px rgba(255,255,255,0.1); }
+      5%            { transform: scale(1.65); box-shadow: 0 0 18px 7px rgba(38,35,29,0.32); }
+      14%           { transform: scale(1.2);  box-shadow: 0 0 10px 3px rgba(38,35,29,0.1); }
     }
     /* 第 1 環：spotlight 瞬間射出的光圈 */
     @keyframes tl-ring-1 {
@@ -377,9 +378,9 @@
 
     /* Dell accent spotlight — 綠光加強版 */
     @keyframes tl-dot-spotlight-accent {
-      0%, 22%, 100% { transform: scale(1);    box-shadow: 0 0 6px 2px rgba(110,231,183,0.22); }
-      5%            { transform: scale(1.85); box-shadow: 0 0 32px 14px rgba(110,231,183,0.65); }
-      14%           { transform: scale(1.35); box-shadow: 0 0 18px 6px rgba(110,231,183,0.3); }
+      0%, 22%, 100% { transform: scale(1);    box-shadow: 0 0 6px 2px rgba(193,95,60,0.22); }
+      5%            { transform: scale(1.85); box-shadow: 0 0 32px 14px rgba(193,95,60,0.65); }
+      14%           { transform: scale(1.35); box-shadow: 0 0 18px 6px rgba(193,95,60,0.3); }
     }
 
     /* ── 順序延遲：12.5s cycle，5 節點每行差 2.5s ── */
@@ -420,12 +421,12 @@
       animation: none;
     }
     .tl-dot::before {
-      border: 1px solid rgba(160,174,192,0.6);
+      border: 1px solid rgba(110,100,85,0.5);
       animation: tl-ring-1 12.5s ease-out infinite;
       animation-delay: var(--pd);
     }
     .tl-dot::after {
-      border: 1px solid rgba(160,174,192,0.38);
+      border: 1px solid rgba(110,100,85,0.3);
       animation: tl-ring-2 12.5s ease-out infinite;
       animation-delay: var(--pd);
     }
@@ -438,15 +439,15 @@
       animation-delay: var(--pd);
     }
     .tl-row--accent .tl-dot::before {
-      border-color: rgba(110,231,183,0.65);
+      border-color: rgba(193,95,60,0.65);
       /* 繼承 tl-ring-1 12.5s + var(--pd) */
     }
     .tl-row--accent .tl-dot::after {
-      border-color: rgba(110,231,183,0.35);
+      border-color: rgba(193,95,60,0.35);
       /* 繼承 tl-ring-2 12.5s + var(--pd) */
     }
     .tl-row--accent .tl-dot-wrap::after {
-      border-color: rgba(110,231,183,0.2);
+      border-color: rgba(193,95,60,0.2);
       /* 繼承 tl-ring-3 12.5s + var(--pd) */
     }
 
@@ -468,7 +469,7 @@
     .tl-role {
       font-family: var(--mono);
       font-size: 0.72rem;        /* 放大：0.62 → 0.72 */
-      color: #718096;            /* 中灰，比 --dim 亮 */
+      color: #8a8272;            /* 中灰，比 --dim 亮 */
       margin-bottom: 0.6rem;
     }
     .tl-tags {
@@ -477,15 +478,15 @@
     .tl-tag {
       font-family: var(--mono);
       font-size: 0.68rem;        /* 放大：0.58 → 0.68 */
-      color: #a0aec0;            /* 藍灰，清晰可讀 */
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.04);
+      color: var(--muted);       /* 加深以提升可讀性 */
+      border: 1px solid rgba(38,35,29,0.14);
+      background: rgba(38,35,29,0.04);
       padding: 0.2rem 0.55rem;
       border-radius: 4px;
     }
     .tl-row--accent .tl-tag {
-      border-color: rgba(110,231,183,0.25);
-      color: #81e6c8;            /* 淡薄荷綠，與 Dell accent 呼應 */
+      border-color: rgba(193,95,60,0.25);
+      color: #9a4b2e;            /* 淡薄荷綠，與 Dell accent 呼應 */
     }
 
     /* ────────────────────────────────
@@ -546,7 +547,7 @@
       position: absolute;
       top: -8px; right: 14px;
       font-size: 5.5rem; font-weight: 700;
-      color: rgba(255,255,255,0.035);
+      color: rgba(38,35,29,0.035);
       font-family: var(--mono);
       line-height: 1;
       pointer-events: none;
@@ -591,9 +592,9 @@
       font-family: var(--mono); font-size: 0.65rem;
       padding: 0.18rem 0.5rem;
       border-radius: 3px;
-      border: 1px solid var(--border);
-      color: var(--dim);
-      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(38,35,29,0.14);
+      color: var(--muted);
+      background: rgba(38,35,29,0.04);
     }
 
     /* ────────────────────────────────
@@ -684,7 +685,7 @@
       font-size: 0.78rem; color: var(--muted);
       transition: border-color 0.15s, color 0.15s;
     }
-    .social-btn:hover { border-color: rgba(255,255,255,0.22); color: var(--fg); }
+    .social-btn:hover { border-color: rgba(38,35,29,0.22); color: var(--fg); }
     .social-btn svg { flex-shrink: 0; }
 
     /* ────────────────────────────────
@@ -725,18 +726,26 @@
     }
     /* ── Nav 經驗分享按鈕 ── */
     .nav-share-btn {
-      background: none; border: 1px solid rgba(110,231,183,0.35);
+      background: none; border: 1px solid rgba(193,95,60,0.35);
       color: var(--accent); font-size: 0.83rem; font-family: var(--sans);
       padding: 0.3rem 0.85rem; border-radius: 20px; cursor: pointer;
       transition: background 0.2s, border-color 0.2s;
     }
-    .nav-share-btn:hover { background: rgba(110,231,183,0.08); border-color: var(--accent); }
+    .nav-share-btn:hover { background: rgba(193,95,60,0.08); border-color: var(--accent); }
 
     /* ══════════════ PRESENTATION OVERLAY ══════════════ */
     #pres-overlay {
       display: none; position: fixed; inset: 0; z-index: 9999;
       background: #08090a; flex-direction: column;
       font-family: var(--sans);
+      /* 簡報維持深色劇場感，覆寫 token 讓文字在深底上仍清晰 */
+      --fg: #F3EFE6;
+      --muted: #A8A294;
+      --dim: #6F6A5E;
+      --surface: #171614;
+      --surface-hi: #201E1B;
+      --border: rgba(255,255,255,0.06);
+      --border-hi: rgba(255,255,255,0.12);
     }
     #pres-overlay.active { display: flex; }
 
@@ -773,6 +782,10 @@
       padding: 2rem 3rem;
       border-right: 1px solid rgba(255,255,255,0.05);
       gap: 0.5rem;
+      /* 覆寫全站 nav 樣式：簡報側欄維持深色劇場底 */
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
     .pres-toc-item {
       display: flex; align-items: center; gap: 1.1rem;
@@ -800,14 +813,14 @@
     .pres-toc-item.toc-past .pres-toc-label { color: rgba(255,255,255,0.3); }
     /* 狀態：當前（Spotlight 打亮） */
     .pres-toc-item.toc-active {
-      background: rgba(110,231,183,0.06);
+      background: rgba(193,95,60,0.06);
     }
     .pres-toc-item.toc-active .pres-toc-num {
       color: var(--accent);
     }
     .pres-toc-item.toc-active .pres-toc-label {
       color: var(--fg);
-      text-shadow: 0 0 16px rgba(110,231,183,0.55), 0 0 32px rgba(110,231,183,0.2);
+      text-shadow: 0 0 16px rgba(193,95,60,0.55), 0 0 32px rgba(193,95,60,0.2);
       font-weight: 600;
     }
     /* 左側 accent 線 */
@@ -816,7 +829,7 @@
       position: absolute; left: 0; top: 50%; transform: translateY(-50%);
       width: 2px; height: 60%; background: var(--accent);
       border-radius: 2px;
-      box-shadow: 0 0 8px rgba(110,231,183,0.6);
+      box-shadow: 0 0 8px rgba(193,95,60,0.6);
     }
     .pres-toc-item { position: relative; }
 
@@ -863,9 +876,9 @@
     /* 金句框 */
     .pres-quote {
       border-left: 3px solid var(--accent); padding: 0.9rem 1.5rem;
-      color: rgba(110,231,183,0.85); font-size: clamp(1.2rem, 2vw, 1.8rem);
+      color: rgba(193,95,60,0.85); font-size: clamp(1.2rem, 2vw, 1.8rem);
       font-style: italic; margin-bottom: 2.25rem;
-      background: rgba(110,231,183,0.04); border-radius: 0 6px 6px 0;
+      background: rgba(193,95,60,0.04); border-radius: 0 6px 6px 0;
     }
 
     /* 重點列表 */
@@ -889,7 +902,7 @@
       display: none;
     }
     .pres-notes.show { display: block; }
-    .notes-label { color: rgba(110,231,183,0.4); margin-bottom: 0.35rem; font-size: 0.7rem; letter-spacing: 0.1em; }
+    .notes-label { color: rgba(193,95,60,0.4); margin-bottom: 0.35rem; font-size: 0.7rem; letter-spacing: 0.1em; }
 
     /* 底部導航 */
     .pres-nav {
@@ -927,7 +940,7 @@
     .pres-speaker-tag span:first-child {
       font-family: var(--mono); font-size: 1.05rem;
       color: var(--accent); padding: 0.35rem 0.85rem;
-      border: 1px solid rgba(110,231,183,0.3); border-radius: 4px;
+      border: 1px solid rgba(193,95,60,0.3); border-radius: 4px;
     }
     .pres-speaker-tag span:last-child { font-size: 1.05rem; color: var(--muted); }
 
@@ -1012,7 +1025,7 @@
               <rect x="6" y="6" width="15" height="16" rx="0.5"
                     fill="none" stroke="#1A3A7A" stroke-width="2.2"/>
               <!-- 右側開口 (遮掉右邊框) -->
-              <rect x="19" y="7.5" width="4" height="13" fill="#08090a"/>
+              <rect x="19" y="7.5" width="4" height="13" fill="#EDE8DC"/>
               <!-- 右下角兩個小點 -->
               <rect x="20" y="18" width="4" height="4" rx="0.5" fill="#5a7abf"/>
               <rect x="25" y="18" width="4" height="4" rx="0.5" fill="#5a7abf"/>
@@ -1280,110 +1293,110 @@
         <line x1="155" y1="198" x2="504" y2="212" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
 
         <!-- ── Technical PM 衛星連線 ── -->
-        <line x1="155" y1="198" x2="38"  y2="115" stroke="#60a5fa" stroke-width="0.8" opacity="0.22"/>
-        <line x1="155" y1="198" x2="33"  y2="222" stroke="#60a5fa" stroke-width="0.8" opacity="0.22"/>
-        <line x1="155" y1="198" x2="68"  y2="320" stroke="#60a5fa" stroke-width="0.8" opacity="0.22"/>
-        <line x1="155" y1="198" x2="178" y2="338" stroke="#60a5fa" stroke-width="0.8" opacity="0.22"/>
-        <line x1="155" y1="198" x2="260" y2="295" stroke="#60a5fa" stroke-width="0.8" opacity="0.22"/>
+        <line x1="155" y1="198" x2="38"  y2="115" stroke="#C15F3C" stroke-width="0.8" opacity="0.22"/>
+        <line x1="155" y1="198" x2="33"  y2="222" stroke="#C15F3C" stroke-width="0.8" opacity="0.22"/>
+        <line x1="155" y1="198" x2="68"  y2="320" stroke="#C15F3C" stroke-width="0.8" opacity="0.22"/>
+        <line x1="155" y1="198" x2="178" y2="338" stroke="#C15F3C" stroke-width="0.8" opacity="0.22"/>
+        <line x1="155" y1="198" x2="260" y2="295" stroke="#C15F3C" stroke-width="0.8" opacity="0.22"/>
 
         <!-- ── Product 衛星連線 ── -->
-        <line x1="338" y1="112" x2="198" y2="45"  stroke="#a78bfa" stroke-width="0.8" opacity="0.22"/>
-        <line x1="338" y1="112" x2="338" y2="33"  stroke="#a78bfa" stroke-width="0.8" opacity="0.22"/>
-        <line x1="338" y1="112" x2="468" y2="42"  stroke="#a78bfa" stroke-width="0.8" opacity="0.22"/>
-        <line x1="338" y1="112" x2="562" y2="88"  stroke="#a78bfa" stroke-width="0.8" opacity="0.22"/>
-        <line x1="338" y1="112" x2="245" y2="185" stroke="#a78bfa" stroke-width="0.8" opacity="0.22"/>
+        <line x1="338" y1="112" x2="198" y2="45"  stroke="#7C7A52" stroke-width="0.8" opacity="0.22"/>
+        <line x1="338" y1="112" x2="338" y2="33"  stroke="#7C7A52" stroke-width="0.8" opacity="0.22"/>
+        <line x1="338" y1="112" x2="468" y2="42"  stroke="#7C7A52" stroke-width="0.8" opacity="0.22"/>
+        <line x1="338" y1="112" x2="562" y2="88"  stroke="#7C7A52" stroke-width="0.8" opacity="0.22"/>
+        <line x1="338" y1="112" x2="245" y2="185" stroke="#7C7A52" stroke-width="0.8" opacity="0.22"/>
 
         <!-- ── AI & Domain 衛星連線 ── -->
-        <line x1="504" y1="212" x2="618" y2="148" stroke="#6ee7b7" stroke-width="0.8" opacity="0.22"/>
-        <line x1="504" y1="212" x2="625" y2="262" stroke="#6ee7b7" stroke-width="0.8" opacity="0.22"/>
-        <line x1="504" y1="212" x2="562" y2="332" stroke="#6ee7b7" stroke-width="0.8" opacity="0.22"/>
-        <line x1="504" y1="212" x2="415" y2="332" stroke="#6ee7b7" stroke-width="0.8" opacity="0.22"/>
-        <line x1="504" y1="212" x2="405" y2="188" stroke="#6ee7b7" stroke-width="0.8" opacity="0.22"/>
+        <line x1="504" y1="212" x2="618" y2="148" stroke="#A6803D" stroke-width="0.8" opacity="0.22"/>
+        <line x1="504" y1="212" x2="625" y2="262" stroke="#A6803D" stroke-width="0.8" opacity="0.22"/>
+        <line x1="504" y1="212" x2="562" y2="332" stroke="#A6803D" stroke-width="0.8" opacity="0.22"/>
+        <line x1="504" y1="212" x2="415" y2="332" stroke="#A6803D" stroke-width="0.8" opacity="0.22"/>
+        <line x1="504" y1="212" x2="405" y2="188" stroke="#A6803D" stroke-width="0.8" opacity="0.22"/>
 
         <!-- ── Technical PM 衛星節點 ── -->
-        <circle cx="38"  cy="115" r="3.5" fill="#60a5fa" opacity="0.85"/>
-        <text x="46"  y="119" fill="#4a7899" font-size="10.5" font-family="Inter,sans-serif">NPI Program Mgmt</text>
-        <circle cx="33"  cy="222" r="3.5" fill="#60a5fa" opacity="0.85"/>
-        <text x="41"  y="226" fill="#4a7899" font-size="10.5" font-family="Inter,sans-serif">ODM / NRE Audit</text>
-        <circle cx="68"  cy="320" r="3.5" fill="#60a5fa" opacity="0.85"/>
-        <text x="76"  y="324" fill="#4a7899" font-size="10.5" font-family="Inter,sans-serif">HW Platform Dev</text>
-        <circle cx="178" cy="338" r="3.5" fill="#60a5fa" opacity="0.85"/>
-        <text x="186" y="342" fill="#4a7899" font-size="10.5" font-family="Inter,sans-serif">Edge SW Solution</text>
-        <circle cx="260" cy="295" r="3.5" fill="#60a5fa" opacity="0.85"/>
-        <text x="260" y="312" text-anchor="middle" fill="#4a7899" font-size="10.5" font-family="Inter,sans-serif">IT Tool Dev</text>
+        <circle cx="38"  cy="115" r="3.5" fill="#C15F3C" opacity="0.85"/>
+        <text x="46"  y="119" fill="#8a4326" font-size="10.5" font-family="Inter,sans-serif">NPI Program Mgmt</text>
+        <circle cx="33"  cy="222" r="3.5" fill="#C15F3C" opacity="0.85"/>
+        <text x="41"  y="226" fill="#8a4326" font-size="10.5" font-family="Inter,sans-serif">ODM / NRE Audit</text>
+        <circle cx="68"  cy="320" r="3.5" fill="#C15F3C" opacity="0.85"/>
+        <text x="76"  y="324" fill="#8a4326" font-size="10.5" font-family="Inter,sans-serif">HW Platform Dev</text>
+        <circle cx="178" cy="338" r="3.5" fill="#C15F3C" opacity="0.85"/>
+        <text x="186" y="342" fill="#8a4326" font-size="10.5" font-family="Inter,sans-serif">Edge SW Solution</text>
+        <circle cx="260" cy="295" r="3.5" fill="#C15F3C" opacity="0.85"/>
+        <text x="260" y="312" text-anchor="middle" fill="#8a4326" font-size="10.5" font-family="Inter,sans-serif">IT Tool Dev</text>
 
         <!-- ── Product 衛星節點 ── -->
-        <circle cx="198" cy="45"  r="3.5" fill="#a78bfa" opacity="0.85"/>
-        <text x="198" y="35"  text-anchor="middle" fill="#6d5fa8" font-size="10.5" font-family="Inter,sans-serif">Product LCM</text>
-        <circle cx="338" cy="33"  r="3.5" fill="#a78bfa" opacity="0.85"/>
-        <text x="338" y="23"  text-anchor="middle" fill="#6d5fa8" font-size="10.5" font-family="Inter,sans-serif">Go-to-Market</text>
-        <circle cx="468" cy="42"  r="3.5" fill="#a78bfa" opacity="0.85"/>
-        <text x="468" y="32"  text-anchor="middle" fill="#6d5fa8" font-size="10.5" font-family="Inter,sans-serif">PCR / Scope</text>
-        <circle cx="562" cy="88"  r="3.5" fill="#a78bfa" opacity="0.85"/>
-        <text x="570" y="92"  fill="#6d5fa8" font-size="10.5" font-family="Inter,sans-serif">Cross-func</text>
-        <circle cx="245" cy="185" r="3.5" fill="#a78bfa" opacity="0.85"/>
-        <text x="253" y="189" fill="#6d5fa8" font-size="10.5" font-family="Inter,sans-serif">Kickstarter</text>
+        <circle cx="198" cy="45"  r="3.5" fill="#7C7A52" opacity="0.85"/>
+        <text x="198" y="35"  text-anchor="middle" fill="#565436" font-size="10.5" font-family="Inter,sans-serif">Product LCM</text>
+        <circle cx="338" cy="33"  r="3.5" fill="#7C7A52" opacity="0.85"/>
+        <text x="338" y="23"  text-anchor="middle" fill="#565436" font-size="10.5" font-family="Inter,sans-serif">Go-to-Market</text>
+        <circle cx="468" cy="42"  r="3.5" fill="#7C7A52" opacity="0.85"/>
+        <text x="468" y="32"  text-anchor="middle" fill="#565436" font-size="10.5" font-family="Inter,sans-serif">PCR / Scope</text>
+        <circle cx="562" cy="88"  r="3.5" fill="#7C7A52" opacity="0.85"/>
+        <text x="570" y="92"  fill="#565436" font-size="10.5" font-family="Inter,sans-serif">Cross-func</text>
+        <circle cx="245" cy="185" r="3.5" fill="#7C7A52" opacity="0.85"/>
+        <text x="253" y="189" fill="#565436" font-size="10.5" font-family="Inter,sans-serif">Kickstarter</text>
 
         <!-- ── AI & Domain 衛星節點 ── -->
-        <circle cx="618" cy="148" r="3.5" fill="#6ee7b7" opacity="0.85"/>
-        <text x="610" y="144" text-anchor="end" fill="#3d8a6a" font-size="10.5" font-family="Inter,sans-serif">n8n Automation</text>
-        <circle cx="625" cy="262" r="3.5" fill="#6ee7b7" opacity="0.85"/>
-        <text x="617" y="258" text-anchor="end" fill="#3d8a6a" font-size="10.5" font-family="Inter,sans-serif">Vibe Coding</text>
-        <circle cx="562" cy="332" r="3.5" fill="#6ee7b7" opacity="0.85"/>
-        <text x="554" y="328" text-anchor="end" fill="#3d8a6a" font-size="10.5" font-family="Inter,sans-serif">LLM Tool Adoption</text>
-        <circle cx="415" cy="332" r="3.5" fill="#6ee7b7" opacity="0.85"/>
-        <text x="407" y="328" text-anchor="end" fill="#3d8a6a" font-size="10.5" font-family="Inter,sans-serif">Financial Law</text>
-        <circle cx="405" cy="188" r="3.5" fill="#6ee7b7" opacity="0.85"/>
-        <text x="413" y="184" fill="#3d8a6a" font-size="10.5" font-family="Inter,sans-serif">Legal-Tech PM</text>
+        <circle cx="618" cy="148" r="3.5" fill="#A6803D" opacity="0.85"/>
+        <text x="610" y="144" text-anchor="end" fill="#6f5526" font-size="10.5" font-family="Inter,sans-serif">n8n Automation</text>
+        <circle cx="625" cy="262" r="3.5" fill="#A6803D" opacity="0.85"/>
+        <text x="617" y="258" text-anchor="end" fill="#6f5526" font-size="10.5" font-family="Inter,sans-serif">Vibe Coding</text>
+        <circle cx="562" cy="332" r="3.5" fill="#A6803D" opacity="0.85"/>
+        <text x="554" y="328" text-anchor="end" fill="#6f5526" font-size="10.5" font-family="Inter,sans-serif">LLM Tool Adoption</text>
+        <circle cx="415" cy="332" r="3.5" fill="#A6803D" opacity="0.85"/>
+        <text x="407" y="328" text-anchor="end" fill="#6f5526" font-size="10.5" font-family="Inter,sans-serif">Financial Law</text>
+        <circle cx="405" cy="188" r="3.5" fill="#A6803D" opacity="0.85"/>
+        <text x="413" y="184" fill="#6f5526" font-size="10.5" font-family="Inter,sans-serif">Legal-Tech PM</text>
 
         <!-- ── 核心節點脈衝環 ── -->
         <!-- Tech 脈衝 -->
-        <circle cx="155" cy="198" r="16" fill="none" stroke="#60a5fa" stroke-width="1.2">
+        <circle cx="155" cy="198" r="16" fill="none" stroke="#C15F3C" stroke-width="1.2">
           <animate attributeName="r"       values="16;32;16" dur="3s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
         </circle>
-        <circle cx="155" cy="198" r="16" fill="none" stroke="#60a5fa" stroke-width="0.8">
+        <circle cx="155" cy="198" r="16" fill="none" stroke="#C15F3C" stroke-width="0.8">
           <animate attributeName="r"       values="16;32;16" dur="3s" begin="1s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" begin="1s" repeatCount="indefinite"/>
         </circle>
         <!-- Product 脈衝 -->
-        <circle cx="338" cy="112" r="16" fill="none" stroke="#a78bfa" stroke-width="1.2">
+        <circle cx="338" cy="112" r="16" fill="none" stroke="#7C7A52" stroke-width="1.2">
           <animate attributeName="r"       values="16;32;16" dur="3s" begin="1s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" begin="1s" repeatCount="indefinite"/>
         </circle>
-        <circle cx="338" cy="112" r="16" fill="none" stroke="#a78bfa" stroke-width="0.8">
+        <circle cx="338" cy="112" r="16" fill="none" stroke="#7C7A52" stroke-width="0.8">
           <animate attributeName="r"       values="16;32;16" dur="3s" begin="2s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" begin="2s" repeatCount="indefinite"/>
         </circle>
         <!-- AI 脈衝 -->
-        <circle cx="504" cy="212" r="16" fill="none" stroke="#6ee7b7" stroke-width="1.2">
+        <circle cx="504" cy="212" r="16" fill="none" stroke="#A6803D" stroke-width="1.2">
           <animate attributeName="r"       values="16;32;16" dur="3s" begin="2s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" begin="2s" repeatCount="indefinite"/>
         </circle>
-        <circle cx="504" cy="212" r="16" fill="none" stroke="#6ee7b7" stroke-width="0.8">
+        <circle cx="504" cy="212" r="16" fill="none" stroke="#A6803D" stroke-width="0.8">
           <animate attributeName="r"       values="16;32;16" dur="3s" begin="0s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" begin="0s" repeatCount="indefinite"/>
         </circle>
 
         <!-- ── 核心節點本體 ── -->
-        <circle cx="155" cy="198" r="10" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
-        <circle cx="155" cy="198" r="5"  fill="#60a5fa"/>
-        <text x="155" y="222" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="600" font-family="Inter,sans-serif">Technical PM</text>
+        <circle cx="155" cy="198" r="10" fill="rgba(193,95,60,0.15)" stroke="#C15F3C" stroke-width="1.5"/>
+        <circle cx="155" cy="198" r="5"  fill="#C15F3C"/>
+        <text x="155" y="222" text-anchor="middle" fill="#C15F3C" font-size="11" font-weight="600" font-family="Inter,sans-serif">Technical PM</text>
 
-        <circle cx="338" cy="112" r="10" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
-        <circle cx="338" cy="112" r="5"  fill="#a78bfa"/>
-        <text x="338" y="97" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="600" font-family="Inter,sans-serif">Product</text>
+        <circle cx="338" cy="112" r="10" fill="rgba(124,122,82,0.15)" stroke="#7C7A52" stroke-width="1.5"/>
+        <circle cx="338" cy="112" r="5"  fill="#7C7A52"/>
+        <text x="338" y="97" text-anchor="middle" fill="#7C7A52" font-size="11" font-weight="600" font-family="Inter,sans-serif">Product</text>
 
-        <circle cx="504" cy="212" r="10" fill="rgba(110,231,183,0.15)" stroke="#6ee7b7" stroke-width="1.5"/>
-        <circle cx="504" cy="212" r="5"  fill="#6ee7b7"/>
-        <text x="504" y="236" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="600" font-family="Inter,sans-serif">AI &amp; Domain</text>
+        <circle cx="504" cy="212" r="10" fill="rgba(166,128,61,0.15)" stroke="#A6803D" stroke-width="1.5"/>
+        <circle cx="504" cy="212" r="5"  fill="#A6803D"/>
+        <text x="504" y="236" text-anchor="middle" fill="#A6803D" font-size="11" font-weight="600" font-family="Inter,sans-serif">AI &amp; Domain</text>
       </svg>
 
       <!-- 圖例 -->
       <div class="const-legend">
-        <span class="const-legend-item"><span class="const-legend-dot" style="background:#60a5fa"></span>Technical PM</span>
-        <span class="const-legend-item"><span class="const-legend-dot" style="background:#a78bfa"></span>Product</span>
-        <span class="const-legend-item"><span class="const-legend-dot" style="background:#6ee7b7"></span>AI &amp; Domain</span>
+        <span class="const-legend-item"><span class="const-legend-dot" style="background:#C15F3C"></span>Technical PM</span>
+        <span class="const-legend-item"><span class="const-legend-dot" style="background:#7C7A52"></span>Product</span>
+        <span class="const-legend-item"><span class="const-legend-dot" style="background:#A6803D"></span>AI &amp; Domain</span>
       </div>
     </div>
   </section>

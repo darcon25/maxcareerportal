@@ -1,5 +1,5 @@
 # Maxcareerportal — DESIGN.md
-> Open Design 規格文件。定義品牌語言與個人定位。最後更新：2026-06-10
+> Open Design 規格文件。定義品牌語言與個人定位。最後更新：2026-08-04
 
 ---
 
@@ -24,6 +24,7 @@
 
 | 期間 | 職稱 | 公司 | Tags |
 |------|------|------|------|
+| 2026 Feb – 現在 | AI Automation Builder（自主專案／進修） | Independent | Claude Code、n8n Automation、LLM Prompt Engineering、10+ AI Side Projects |
 | 2021 Nov – 2026 Jan | Advisory Project Manager | Dell Technology (Taiwan) | PowerEdge Server、Edge Solution、Healthcare Platform |
 | 2018 Nov – 2021 Nov | Advisory Project Manager | Lenovo (LC Futurecenter) | ThinkPad T Series、Mobile Workstation P、Technical PM、Development PM、Product Core Team |
 | 2015 Nov – 2018 Nov | Product Manager | GSP Tech Co., Ltd *(Taiwan Startup)* | Talkimate SPK Mic、Kickstarter Crowdfunding、Amazon Selling Channel |
@@ -39,6 +40,17 @@
 |------|------|------|
 | 2009 – 2010 | University of Wollongong, AUS | Master in Project Management |
 | 2000 – 2005 | Chung Yuan University, TW | Financial Law |
+
+---
+
+## AI 認證與進修（2026）
+
+| 類別 | 項目 |
+|------|------|
+| Google | Google AI Essentials、Google AI Professional 專項課程 |
+| Anthropic Claude | Claude 101、Claude Code 101、Claude Code in Action |
+| Anthropic Claude | Introduction to Agent Skills、Introduction to Subagents |
+| Foundations | AI Capabilities and Limitations（AI 運作原理入門） |
 
 ---
 
@@ -70,8 +82,10 @@
 - Global Offering Matrix Management
 
 ### AI & Emerging
-- Automation tool: **n8n** deployment
+- Automation tool: **n8n** deployment（10+ 自動化流程實作）
 - Vibe Coding via LLM (**Claude Code**, Codex)
+- Claude Agent Skills & Subagents 建置
+- LLM Prompt Engineering / AI 工作流整合
 - AI tool adoption & self-learning capability
 
 ### Domain Knowledge
@@ -98,6 +112,21 @@
 | Talkimate | Kickstarter 群眾募資 SPK Mic，Amazon 4/5 顆星，YT 3萬觀看 | [Kickstarter](https://www.kickstarter.com/projects/595987921/talkimate-the-stylish-accessory-for-smartphone-wal/rewards?lang=zh) |
 | Dell Internal IT Tool | SW spec 整合、UI/UX 優化、內部開發團隊溝通 | — |
 | Edge / Healthcare Platform | Pioneer feature dev：Healthcare、GPU Card、Edge Solution | — |
+
+### AI Side Projects（2026，自主開發）
+
+| 專案 | 說明 |
+|------|------|
+| Maxcareerportal | 個人職涯網站，Claude Code 開發、Zeabur 部署上線 |
+| MaxJobhunting | JD × 履歷落差分析工具，串接 Claude API 產生客製化履歷 |
+| Maxstockreview | 股票／投資回顧分析工具 |
+| NZtrip App | 家族旅遊行程網站（React + Vite + Express + SQLite） |
+| n8n：Recurrent Buy BTC | 定期定額買進 BTC 自動化流程 |
+| n8n：US Stock Summary Bot | YouTube 美股摘要自動整理 Bot |
+| n8n：TW Stock Summary Bot | YouTube 台股摘要自動整理 Bot |
+| n8n：AI Tech Summary Bot | YouTube AI 科技新知摘要 Bot |
+| n8n：LinkedIn Recommend Bot | LinkedIn 職缺推薦自動化 Bot |
+| n8n：Knowledge Vault Bot | Telegram 知識庫整理 Bot |
 
 ---
 
