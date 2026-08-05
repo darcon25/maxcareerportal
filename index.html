@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <script>
     (function () {
-      var saved = localStorage.getItem('site-lang');
+      var saved;
+      try { saved = localStorage.getItem('site-lang'); } catch (e) {}
+      if (saved !== 'zh' && saved !== 'en') saved = null;
       var nav = (navigator.language || '').toLowerCase();
       var lang = saved || (nav.indexOf('en') === 0 ? 'en' : 'zh');
       var root = document.documentElement;
@@ -1511,7 +1513,7 @@
           </div>
         </div>
         <span class="project-arrow">↗</span>
-      </a>
+      </div>
     </div>
   </section>
 
@@ -1732,7 +1734,7 @@
       root.classList.remove('lang-zh', 'lang-en');
       root.classList.add('lang-' + next);
       root.setAttribute('lang', next === 'en' ? 'en' : 'zh-TW');
-      localStorage.setItem('site-lang', next);
+      try { localStorage.setItem('site-lang', next); } catch (e) {}
     }
 
     function openPresentation() {
