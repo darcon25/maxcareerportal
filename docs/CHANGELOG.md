@@ -1,5 +1,40 @@
 # Maxcareerportal — 更新日誌
 
+## v0.6 — 中英雙語切換 + 對外上線
+**日期：** 2026-08-05
+**來源履歷：** `Position_Product management ChienTsungLiu (Max) July 2026.docx`
+
+### 雙語功能（i18n）
+- **隔離方式**：雙區塊 CSS 顯示切換。可翻譯文字包中／英兩份（`t-zh`/`t-en`），`<html>` 掛 `lang-zh`/`lang-en`，CSS 只顯示對應語言。
+- **自動偵測**：首次進站讀 `navigator.language`。**預設邏輯：`zh` 開頭 → 中文；其餘全部（英文、日文、德文…）→ 英文**（適合對外分享，非中文語系一律英文）。
+- **手動切換**：nav 右上角「中／EN」按鈕（`toggleLang()`），選擇存 `localStorage['site-lang']`，重整後記憶。
+- **防護**：`localStorage` 讀寫加 `try/catch`，並驗證存值只接受 `zh`/`en`（避免極端瀏覽器出現中英並存）。
+- **經驗分享簡報**：中英文版皆隱藏 nav 按鈕，簡報內容不翻譯（在地化演講，短期用不到）。
+
+### 英文文案
+- 全站英文改寫為道地 portfolio 語感，去除翻譯腔（hero「Law by training, product by trade.」、About 開場、GSP 條目等），關鍵數據保留（15 年、100+ 團隊、300+ PCR/gen、30K 觀看、4/5 星、10+ 世代 NPI）。
+
+### 內容修正
+- **Pioneer 專案卡**：從 Dell 改為 **LC Futurecenter**，三亮點 **Wave 1 / Healthcare Platform / GPU Raw Card**，移除 Edge 與「跨部門緊急修復排程機制」句。
+- **Hero 數據**：企業數 6 → **5**（Qisda、Elite、LC Futurecenter、GSP Tech、Dell）。
+- **Dell 時間軸標籤**：改為 PowerEdge Server / Storage Server / NativeEdge / IT Tool Development。
+
+### 部署
+- 走 ghcr.io 預建 image（`ghcr.io/darcon25/maxcareerportal:latest`，amd64）+ Zeabur 重啟，非 git push。
+- **線上網址：** https://max-career-portal.zeabur.app/
+
+---
+
+## v0.5 — 配色改版 方案C 書布褐（暖亮色）
+**日期：** 2026-08-04
+
+- 整站深色 Linear 風 → 亮色暖書布褐（參考 Claude 官網）。
+- Token：bg `#EDE8DC`、fg `#26231D`、muted `#56534B`、dim `#7A7466`、accent 深赤陶 `#C15F3C`、accent-2 橄欖 `#7C7A52`。
+- 一併調整：hero 漸層（赤陶→brass）、時間軸打燈動畫、能力地圖 SVG 三群配色、nav 毛玻璃、標籤與內文加深提升可讀性。
+- 簡報 overlay（經驗分享）維持深色劇場、只覆寫 token。
+
+---
+
 ## v0.4 — 真實履歷資料填入
 **日期：** 2026-06-09  
 **來源：** `LATEST Position_Product_Project management ChienTsungLiu (Max) 2026.docx`
@@ -77,9 +112,11 @@
 
 ## 待辦 / 下一步
 
-- [ ] 填入真實個人資料（姓名、職涯內容、專案）
-- [ ] 補充 About 卡片內容
+- [x] 填入真實個人資料（姓名、職涯內容、專案）— v0.4
+- [x] 補充 About 卡片內容 — v0.4
+- [x] 部署上線 — v0.6（Zeabur + ghcr.io image，非 Vercel）
+- [x] 中英雙語切換 — v0.6
+- [ ] `main` push 到 GitHub 同步 GitHub Pages 備份（目前領先 origin/main）
 - [ ] 新增真實文章連結至 Writing 區塊
-- [ ] 部署至 Vercel / Cloudflare Pages
 - [ ] 加入 OG meta tags（社群分享預覽）
 - [ ] 手機版微調（Experience 格線）
