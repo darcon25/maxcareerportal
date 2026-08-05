@@ -8,7 +8,7 @@
       try { saved = localStorage.getItem('site-lang'); } catch (e) {}
       if (saved !== 'zh' && saved !== 'en') saved = null;
       var nav = (navigator.language || '').toLowerCase();
-      var lang = saved || (nav.indexOf('en') === 0 ? 'en' : 'zh');
+      var lang = saved || (nav.indexOf('zh') === 0 ? 'zh' : 'en');
       var root = document.documentElement;
       root.classList.add('lang-' + lang);
       root.setAttribute('lang', lang === 'en' ? 'en' : 'zh-TW');
