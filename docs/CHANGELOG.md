@@ -1,5 +1,21 @@
 # Maxcareerportal — 更新日誌
 
+## v0.7 — 部署遷移至 Cloudflare Pages
+**日期：** 2026-10-20
+
+### 背景
+- Zeabur 宣布 2026 年底停止營運，網站由 Zeabur 遷移至 Cloudflare Pages。
+
+### 部署
+- **平台：** Cloudflare Pages（專案名稱 `maxliucareer`），連接 GitHub repo，`main` push 後自動部署，不再使用 ghcr.io image。
+- **建置：** build command 將網站檔案複製到 `dist/`，排除 `docs/`、隱藏檔與 `Dockerfile`。
+- **線上網址：** https://maxliucareer.pages.dev/
+
+### 內容修正
+- `index.html` 的 `canonical` 與 `og:url` 由 `maxliucareer.zeabur.app` 改為 `maxliucareer.pages.dev`。
+
+---
+
 ## v0.6 — 中英雙語切換 + 對外上線
 **日期：** 2026-08-05
 **來源履歷：** `Position_Product management ChienTsungLiu (Max) July 2026.docx`
@@ -116,6 +132,7 @@
 - [x] 補充 About 卡片內容 — v0.4
 - [x] 部署上線 — v0.6（Zeabur + ghcr.io image，非 Vercel）
 - [x] 中英雙語切換 — v0.6
+- [x] 部署遷移至 Cloudflare Pages — v0.7
 - [ ] `main` push 到 GitHub 同步 GitHub Pages 備份（目前領先 origin/main）
 - [ ] 新增真實文章連結至 Writing 區塊
 - [ ] 加入 OG meta tags（社群分享預覽）
