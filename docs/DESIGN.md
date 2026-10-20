@@ -117,7 +117,7 @@
 
 | 專案 | 說明 |
 |------|------|
-| Maxcareerportal | 個人職涯網站，Claude Code 開發、Zeabur 部署上線 |
+| Maxcareerportal | 個人職涯網站，Claude Code 開發、Cloudflare Pages 部署上線 |
 | MaxJobhunting | JD × 履歷落差分析工具，串接 Claude API 產生客製化履歷 |
 | Maxstockreview | 股票／投資回顧分析工具 |
 | NZtrip App | 家族旅遊行程網站（React + Vite + Express + SQLite） |
@@ -172,17 +172,26 @@
 
 | 項目 | 內容 |
 |------|------|
-| **平台** | [Zeabur](https://zeabur.com) |
+| **平台** | [Cloudflare Pages](https://pages.cloudflare.com)（2026-10-20 自 Zeabur 遷移，Zeabur 宣布 2026 年底停止營運） |
 | **類型** | 靜態網站（Static Site） |
-| **來源** | 單一 `index.html` 檔案 + `zbpack.json` |
+| **來源** | GitHub repo `darcon25/maxcareerportal`，`main` 分支 push 後自動部署 |
+| **Pages 專案名稱** | `maxliucareer` |
 | **狀態** | ✅ 已上線 |
-| **正式網址** | https://maxliucareer.zeabur.app/ |
+| **正式網址** | https://maxliucareer.pages.dev/ |
 
-### 部署步驟（備忘）
-1. 在 Zeabur 建立新 Project
-2. 選擇 Static 服務類型
-3. 上傳 `Maxcareerportal/` 資料夾或連結 GitHub repo
-4. 設定自訂 Domain（如有）
+### Cloudflare Pages 建置設定
+| 欄位 | 值 |
+|------|------|
+| Framework preset | `None` |
+| Build command | `mkdir -p dist && tar --exclude=./docs --exclude=./dist --exclude='./.*' --exclude=./Dockerfile -cf - . \| tar -xf - -C dist` |
+| Build output directory | `dist` |
+
+Build command 會把網站檔案複製到 `dist/`，並排除 `docs/`、隱藏檔與 `Dockerfile`，避免內部文件被公開。新增圖片或資料夾不需修改指令。
+
+### 更新流程
+1. 修改 `index.html` 或 `assets/`
+2. `git push` 到 `main`
+3. Cloudflare Pages 自動建置，約 1 分鐘後上線
 
 ---
 
@@ -194,7 +203,7 @@
 - [x] About 四大 Highlight 卡片（數字柱 A 方案）
 - [x] 連絡方式：Email / GitHub / LinkedIn 連結完整
 - [x] Writing 區塊已移除
-- [x] Zeabur 部署上線
+- [x] Cloudflare Pages 部署上線（原 Zeabur，2026-10-20 遷移）
 
 ## 待補資訊
 
@@ -256,7 +265,7 @@
 
 ### 當前狀態（2026-06-10）
 - 單一 `index.html`，零外部 CDN（僅 Google Fonts）
-- 部署：https://maxliucareer.zeabur.app/（Zeabur Static Site）
+- 部署：https://maxliucareer.zeabur.app/（Zeabur Static Site；2026-10-20 已遷移至 https://maxliucareer.pages.dev/）
 - 本機路徑：`/Users/mmfamily/Downloads/Maxcareerportal/`
 - 主要檔案：`index.html`、`docs/DESIGN.md`、`zbpack.json`
 - 唯一待補：個人頭像照片
